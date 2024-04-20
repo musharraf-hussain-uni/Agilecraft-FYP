@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f5f5f5;
+  --bgSoft: #121212;
+  --text: #f2f4f7;
+  --textSoft: #f05454;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.MuiDataGrid-toolbarContainer {
+  display: flex;
+  flex-direction: row-reverse;
+}

@@ -1,0 +1,168 @@
+/* Login.css */
+.login-container {
+    display: flex;
+    width: 90%;
+    height: 90vh;
+    margin-top: 40px;
+    margin-left: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}  
+  .left-panel {
+    flex: 1;
+    background-color: #e6e6e669;
+    padding: 20px;
+  }
+  
+  .left-panel img {
+    width: 95%;
+    height: 70vh;
+    max-width: 900px;
+    margin-top: 40px;
+  }
+
+  /* right panel */
+  .right-panel {
+    flex: 0.55;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .right-panel-content {
+    text-align: start;
+  }
+  
+  .logo {
+    width: 80px;
+  }
+  
+  form {
+    margin-top: 20px;
+    max-width: 320px;
+  }
+  h3{
+    font-weight: 900;
+    line-height: 40px;
+    font-size: 18px;
+    color: grey;
+  }
+ p{
+  font-size: 14px;
+  font-weight: 100;
+  color: grey;
+ }
+  label {
+    display: block;
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 100;
+    color: grey;
+  }
+  
+  .input {
+    border: 2px solid transparent;
+    width: 100%;
+    margin-bottom: 10px;
+    height: 37px;
+    padding-left: 0.8em;
+    outline: none;
+    overflow: hidden;
+    background-color: #F3F3F3;
+    border-radius: 10px;
+    transition: all 0.5s;
+  }
+  
+  .input:hover,
+  .input:focus {
+    border: 1px solid #4A9DEC;
+    box-shadow: 0px 0px 0px 7px rgb(74, 157, 236, 20%);
+    background-color: white;
+  }
+  
+  
+/* Apply a basic style to the container */
+.remember-forgot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 1; /* Add line-height to help with vertical alignment */
+
+}
+
+/* Style the "Remember me" checkbox and label */
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me input {
+  margin-right: 5px;
+
+}
+
+/* Prevent the label from wrapping to the next line */
+.remember-me label {
+  white-space: nowrap;
+  margin-bottom: 15px;
+
+
+}
+
+/* Style the "Forgot password?" link */
+aside {
+  color: #003175; /* Blue color, you can adjust as needed */
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Add some hover effect to the link */
+aside:hover {
+  text-decoration: underline;
+}
+  button {
+    background-color: #003175;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .create-account {
+    text-align: start;
+    margin-top: 20px;
+  }
+  
+  .create-account p {
+    display: inline; /* or display: inline-block; */
+  font-size: 13px;
+  }
+  
+  .create-account a {
+    display: inline-block;
+  padding: 3px 10px;
+  color: #003175;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .create-account a:hover {
+    background-color: #fff;
+    color: #2980b9;
+  }
+  
+  .social-links {
+    margin-top: 20px;
+  }
+  
+  .social-links a {
+    display: inline-block;
+    margin-right: 10px;
+    color: #3498db;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  

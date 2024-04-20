@@ -1,0 +1,62 @@
+
+.Services-heading{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    text-decoration: underline;
+    color: #003175;
+    margin-bottom: 50px;
+}
+.services-container {
+    width: 98%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px;
+    margin-bottom: 160px;  
+  }
+  
+  .services-column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .service-card {
+    text-align: center;
+    margin-bottom: 10px;
+    width: 600px; /* Adjust the width as per your preference */
+    height: 300px; /* Adjust the height as per your preference */
+    padding: 12px; /* Add padding to create individual containers */
+    border-radius: 8px;
+    transition: background-color 0.3s ease; /* Add transition for smooth color change on hover */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.192); /* Optional: Add box shadow for a subtle effect */
+  }
+  
+  .service-card:hover {
+    background-color: #f0f0f0; /* Change the background color on hover */
+  }
+  
+.service-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.service-details {
+  margin-left: 20px;
+}
+
+.service-name {
+  font-size: 25px;
+  font-weight: bold;
+  color: #003175;
+  margin-bottom: 10px;
+}
+
+.slogan {
+  font-size: 14px;
+  color: #777;
+}

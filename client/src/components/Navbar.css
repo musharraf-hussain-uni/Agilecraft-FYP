@@ -1,0 +1,18 @@
+/* Assuming this is in a separate CSS file, e.g., Navbar.css */
+
+/* Reset styles for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Basic styling for the body and HTML */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  scroll-behavior: smooth;
+}

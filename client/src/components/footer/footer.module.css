@@ -1,0 +1,137 @@
+
+/* Apply basic styles to the footer */
+footer {
+  background-color: #f3f3fe;
+  color: #fff;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Style header in each section */
+.footerSection h4 {
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: #093148;
+}
+
+/* Style the list items */
+.footerSection ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footerSection li {
+  margin-bottom: 5px;
+  color: #747373;
+  font-weight: 100;
+  font-size: 14px;
+}
+.footerSection li:hover {
+  text-decoration: underline;
+}
+
+/* Style links in the footer */
+.footerSection a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footerSection a:hover {
+  text-decoration: underline;
+}
+
+.footerSection br {
+  display: none; /* Hide <br> by default */
+}
+/* second footer */
+.footer1 {
+    display: flex;
+    flex-direction: column;
+height: 14.2vh;
+    background-color: #dcdcfb;
+    padding: 1rem;
+    border-top: px solid #f3f3fe;
+    width: 100%;
+  }
+  
+  .footerContent {
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+  }
+  
+  .footerText {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .footerCopyright {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    color: #666;
+  }
+  
+  .footerLinks {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+  }
+  
+  .footerLink {
+    display: block;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #333;
+    border-radius: 0.25rem;
+    margin: 0 0.25rem 0.5rem 0;
+    transition: background-color 0.3s ease;
+  }
+
+  .footerBlog {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .footerBlogLink {
+    display: block;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #333;
+    border-radius: 0.25rem;
+    margin-right: 0.5rem;
+    transition: background-color 0.3s ease;
+  }
+  
+
+  
+  .socialLinks {
+    display: flex;
+    text-align: right;
+    justify-content: right;
+    padding: 0.25rem;
+    gap: 5px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #333;
+    margin: -2em 0.5rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .footerSocialLink:hover {
+    background-color: #ddd;
+  }
+  
+  .fa-globe-americas {
+    font-size: 0.9rem;
+  }
+  
+  .fab {
+    font-size: 1.2rem;
+  }
