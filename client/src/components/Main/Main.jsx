@@ -11,11 +11,12 @@ const Main = () => {
         <div className={styles.container}>
           <div className={styles.textContainer}>
             <h1 className={styles.title}>
-              Bespoke software solutions for your unique business needs...
+              streamline and improve software development and quality assurance
+              processes{"..."}
             </h1>
             <p className={styles.paragraph}>
               We are a team of highly motivated and skilled developers dedicated
-              to delivering only the best software.
+              to delivering only the best software and quality.
             </p>
             <button className="bg-[#003175] text-white p-4 w-max cursor-pointer">
               Scroll down for more information

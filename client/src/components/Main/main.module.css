@@ -21,7 +21,7 @@
 }
 
 .title{
-    font-size: 45px;
+    font-size: 40px;
     color: #003175;
 }
 
@@ -30,18 +30,6 @@
     color: gray;
 }
 
-.button{
-    width: max-content;
-    font-size: 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    background-color: #003175;
-    transition: all ease 0.1s;
-}
-.button:hover{
-    border-radius: 8px;
-
-}
 .imgContainer{
     flex: 1;
     width: 100%;
@@ -52,6 +40,6 @@ width: 600px;
 }
 
 .bgImg{
-    width: 1518px;
+    width: 1500px;
     height: 400px;
 }

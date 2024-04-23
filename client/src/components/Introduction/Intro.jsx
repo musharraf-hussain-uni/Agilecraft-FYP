@@ -12,8 +12,9 @@ const Intro = () => {
           </div>
           <div className={styles.textContainer}>
             <h1 className={styles.title}>
-              We develop high quality bespoke web and mobile applications for
-              organizations, institutions and SMEs{" "}
+              We develop Agile Craft to address software development
+              inefficiencies and enhance team cohesion. Our platform streamlines
+              processes for improved efficiency...{" "}
             </h1>
             <p className={styles.paragraph}>
               Our team is well vast in software development and is ready to help
@@ -25,7 +26,7 @@ const Intro = () => {
               efficiency.
             </p>
             <button className="p-4 bg-[#003175] text-white max-w-fit">
-              Learn More{" "}
+              Learn More{""}
             </button>
           </div>
         </div>

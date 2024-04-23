@@ -16,3 +16,6 @@ body {
     "Lucida Sans", Arial, sans-serif;
   scroll-behavior: smooth;
 }
+a:hover > div {
+  width: 100%;
+}

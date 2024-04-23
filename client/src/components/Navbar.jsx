@@ -29,14 +29,19 @@ const Navbar = () => {
 
   return (
     <div
-      className={`flex items-center justify-between p-6 w-full bg-white-400 border-gray-500 border-b sticky top-0 z-50 ${
-        scrolled ? "bg-white" : null
+      className={`flex items-center justify-between p-2 w-full bg-white-400 border-gray-500 sticky top-0 z-50 ${
+        scrolled ? "bg-white shadow-md" : null
       }`}
     >
       <div className="flex gap-4 items-center justify-center">
         <img src={logo} alt="" className="w-14 h-14 object-cover" />
         <h1
-          className={`font-bold text-3xl uppercase bg-gradient-to-r from-[#093148] to=[#78a7ee] bg-clip-text text-transparent`}
+          className="font-bold text-3xl uppercase"
+          style={{
+            background: `-webkit-linear-gradient(#003175, #1274CA)`,
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
         >
           AgileCraft
         </h1>
@@ -44,11 +49,9 @@ const Navbar = () => {
       <div className="flex gap-10">
         {links.map((items, index) => (
           <div key={index}>
-            <a
-              href={`#${items}`}
-              className="cursor-pointer text-xl hover:underline transition-all ease-out"
-            >
+            <a href={`#${items}`} className="text-xl text-blue-900 relative">
               {items}
+              <div className="absolute bottom--1 left-0 w-0 h-0.5 bg-blue-800 transition-width duration-300 ease-out"></div>
             </a>
           </div>
         ))}
@@ -56,7 +59,7 @@ const Navbar = () => {
       <div>
         <Link
           to="/login"
-          className="text-xl capitalize cursor-pointer py-4 px-8 bg-[#003175] border-2 border-white text-white rounded-3xl hover:bg-gray-200 hover:border-[#003175] hover:text-black"
+          className="text-xl capitalize cursor-pointer py-2.5 px-6 bg-[#003175] border-2 border-white text-white rounded-3xl hover:bg-gray-200 hover:border-[#003175] hover:text-[#003175]"
         >
           Login
         </Link>
