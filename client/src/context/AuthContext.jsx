@@ -15,7 +15,7 @@ export default function AuthContextProvider() {
       setIsLogged(true);
       navigate("/dashboard", { replace: true });
     }
-  }, [navigate, token]);
+  }, [token, navigate]);
 
   const login = async (email, password) => {
     try {
@@ -36,11 +36,9 @@ export default function AuthContextProvider() {
 
   const register = async (formData) => {
     try {
-      const { data } = await axios.post(
-        "http://localhost:3001/api/auth/register",
-        formData,
-        { headers: { "Content-Type": "multipart/form-data" } }
-      );
+      await axios.post("http://localhost:3001/api/auth/register", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
       toast.success("User Created successfully");
       navigate("/dashboard/user");
     } catch (error) {
@@ -48,11 +46,16 @@ export default function AuthContextProvider() {
       toast.error("Something Went Wrong. Try again");
     }
   };
-  const logout = () => {
-    localStorage.removeItem("access_token");
-    setIsLogged(false);
-    navigate("/", { replace: true });
-    toast.success(`Member logged out successfully!`);
+  const logout = async () => {
+    try {
+      await axios.post("http://localhost:3001/api/auth/logout");
+      localStorage.removeItem("access_token");
+      setIsLogged(false);
+      navigate("/", { replace: true });
+      toast.success(`Member logged out successfully!`);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const value = {

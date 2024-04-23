@@ -13,7 +13,6 @@ import {
 
 const AdminDashboard = () => {
   const { users } = useGetAllUserDash();
-  console.log(users);
   const { user } = useGetUser();
   const { userTask, loading } = useGetUserTask();
 

@@ -3,9 +3,29 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import { GiHamburgerMenu } from "react-icons/gi";
 import DashboardHeader from "../Dashboard-header/DashboardHeader";
+import { useGetUser } from "../../hooks/get-user";
 
 const DashboardLayout = () => {
   const [isOpen, setOpen] = useState(false);
+  const { loading, error } = useGetUser();
+
+  if (loading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <span className="loading loading-loading-spinner loading-lg">
+          Loading user data...
+        </span>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <span className="text-center h-full loading loading-bars loading-lg">
+        Error fetching user data: {error.message}
+      </span>
+    );
+  }
 
   return (
     <div className="relative w-full flex">

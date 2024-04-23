@@ -32,6 +32,10 @@ const SidebarMenu = ({
 
   let conditon = userRole == "admin" || userRole == "Project Manager";
 
+  const handleLogout = async () => {
+    await logout();
+  };
+
   return (
     <div className="sidebar-menu">
       <h3 className="sidebar-title">{title}</h3>
@@ -136,7 +140,7 @@ const SidebarMenu = ({
         )}
         {L8 && (
           <li className={`flex items-center px-2 w-full cursor-pointer`}>
-            <div onClick={logout} className="text-[#F2F4F7] flex gap-6">
+            <div onClick={handleLogout} className="text-[#F2F4F7] flex gap-6">
               <Icon1 className="text-[#F2F4F7]" />
               {L8}
             </div>
