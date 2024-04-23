@@ -1,11 +1,13 @@
 import jwt from "jsonwebtoken";
 
 function generateToken(res, id, role) {
-  const token = jwt.sign({
+  const token = jwt.sign(
+    {
       id: id,
       role: role,
     },
-    process.env.JWT_SECRET, {
+    process.env.JWT_SECRET,
+    {
       expiresIn: "30d",
     }
   );
@@ -59,7 +61,6 @@ function generateToken(res, id, role) {
 //   });
 // };
 
-
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (authHeader) {
@@ -70,7 +71,7 @@ const verifyToken = (req, res, next) => {
       if (err) {
         console.log(err);
         res.status(401).json({
-          message: err.message
+          message: err.message,
         });
       }
       console.log(decoded);
@@ -82,13 +83,9 @@ const verifyToken = (req, res, next) => {
   } else {
     console.log("Something went wrong");
     res.status(401).json({
-      message: "Access denied. Token is missing."
+      message: "Access denied. Token is missing.",
     });
   }
 };
 
-
-export {
-  generateToken,
-  verifyToken
-};
+export { generateToken, verifyToken };

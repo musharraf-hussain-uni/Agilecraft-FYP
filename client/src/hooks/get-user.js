@@ -18,11 +18,9 @@ export const useGetUser = () => {
         },
       });
 
-      // console.log("Fetched user data:", data); // Log fetched data
       setUser(data);
       setLoading(false);
     } catch (error) {
-      // console.error("Error fetching user:", error); // Log error details
       setError(error);
     } finally {
       setLoading(false);

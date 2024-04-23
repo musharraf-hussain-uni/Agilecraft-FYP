@@ -12,18 +12,18 @@ const DashboardLayout = () => {
   if (loading) {
     return (
       <div className="w-full h-screen flex justify-center items-center">
-        <span className="loading loading-loading-spinner loading-lg">
-          Loading user data...
-        </span>
+        <span className="loading loading-spinner loading-lg"></span>
       </div>
     );
   }
 
   if (error) {
     return (
-      <span className="text-center h-full loading loading-bars loading-lg">
-        Error fetching user data: {error.message}
-      </span>
+      <div className="w-full h-screen flex justify-center items-center">
+        <span className="loading loading-spinner loading-lg">
+          Error fetching user data: {error.message}
+        </span>
+      </div>
     );
   }
 
