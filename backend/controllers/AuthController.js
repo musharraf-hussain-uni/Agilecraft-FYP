@@ -1,21 +1,12 @@
 import bcrypt from "bcrypt";
 import User from "../schema/User.js";
-import {
-  generateToken
-} from "../config/token.js";
+import { generateToken } from "../config/token.js";
 
 const saltRounds = 10;
 
 export const register = async (req, res) => {
   try {
-    const {
-      fName,
-      lName,
-      email,
-      password,
-      phoneNumber,
-      options
-    } = req.body;
+    const { fName, lName, email, password, phoneNumber, options } = req.body;
     const img = req.file;
     const url = img.path;
     const conditionForImage = img !== "undefined" ? url : "";
@@ -39,7 +30,7 @@ export const register = async (req, res) => {
     // Send user object and token in the response
     res.status(201).json({
       user: newUser,
-      token
+      token,
     }); // Send both user and token as properties of a single object
   } catch (error) {
     console.log(error);
@@ -51,10 +42,7 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
   try {
-    const {
-      email,
-      password
-    } = req.body;
+    const { email, password } = req.body;
 
     const user = await User.findOne({
       email: email,
@@ -62,7 +50,7 @@ export const login = async (req, res) => {
 
     if (!user) {
       res.status(502).json({
-        message: "No User Found"
+        message: "No User Found",
       });
     }
 
@@ -77,7 +65,7 @@ export const login = async (req, res) => {
         });
       } else {
         res.status(401).json({
-          message: "Invalid Password"
+          message: "Invalid Password",
         });
       }
     }
@@ -86,5 +74,19 @@ export const login = async (req, res) => {
     res.status(500).json({
       error: "Internal Server Error",
     });
+  }
+};
+
+export const logout = (req, res) => {
+  try {
+    // Clear the access_token cookie
+    res.clearCookie("access_token", {
+      httpOnly: true, // Prevent client-side JavaScript access
+      secure: true, // Only send over HTTPS connections (if applicable)
+    });
+
+    res.status(200).json({ message: "Successfully logged out" });
+  } catch (error) {
+    res.status(404).json({ message: "Internal Server Error" });
   }
 };
