@@ -23,7 +23,7 @@ const RequirementGatheringTable = ({ project }) => {
   const currentItems = requirements.slice(indexOfFirstItem, indexOfLastItem);
 
   const filteredProject = project
-    ? requirements.filter((item) => item.module === project)
+    ? requirements.filter((item) => item.project === project)
     : currentItems;
 
   const totalPages = Math.ceil(requirements.length / ITEMS_PER_PAGE);

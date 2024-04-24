@@ -10,6 +10,9 @@ const RequrimentGatheringSchema = Schema(
       type: String,
       required: true,
     },
+    project: {
+      type: String,
+    },
     module: {
       type: String,
     },

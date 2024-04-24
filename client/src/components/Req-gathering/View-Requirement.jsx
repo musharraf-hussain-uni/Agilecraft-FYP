@@ -61,6 +61,12 @@ const ViewRequirement = ({ isOpen, setIsOpen, id }) => {
                     <span className="text-slate-300 ">Requirement: </span>
                     {requirement?.requirement}
                   </p>
+                  <p className="text-sm md:text-base text-white lg:mb-4">
+                    <span className="text-slate-300 ">Project Linked to: </span>
+                    {requirement?.project?.length > 0
+                      ? requirement?.project
+                      : "none"}
+                  </p>
                 </div>
                 <div>
                   <h5 className="text-bold text-lg text-white capitalize">

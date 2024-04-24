@@ -4,15 +4,18 @@ import { FaUserEdit } from "react-icons/fa";
 import { useGetAllRequirement } from "../../hooks/get-req";
 import { useGetUser } from "../../hooks/get-user";
 import { ReqContext } from "../../context/ReqContext";
+import { useGetAllProject } from "../../hooks/get-project";
 
 const UpdateRequirement = ({ isOpen, setIsOpen, id }) => {
   const { requirements } = useGetAllRequirement();
   const { user } = useGetUser();
+  const { projects } = useGetAllProject();
   const { UpdateRequirement } = useContext(ReqContext);
   const foundedtask = requirements.find((item) => item._id == id);
   const [data, setData] = useState({
     title: "",
     requirement: "",
+    project: "",
     priority: "",
     module: "",
     updatedBy: "",
@@ -46,6 +49,7 @@ const UpdateRequirement = ({ isOpen, setIsOpen, id }) => {
       setData({
         title: "",
         requirement: "",
+        project: "",
         priority: "",
         module: "",
       });
@@ -116,6 +120,35 @@ const UpdateRequirement = ({ isOpen, setIsOpen, id }) => {
                 "
                   >
                     Requirement
+                  </span>
+                </label>
+                <label htmlFor="" className="relative block w">
+                  <select
+                    id=""
+                    value={data.project}
+                    onChange={(e) =>
+                      setData({ ...data, project: e.target.value })
+                    }
+                    className="px-2 peer w-full rounded border border-neutral-400 p-4 text-base transition-shadow focus:ring-1 focus:ring-offset-0 focus:border-indigo-400 focus:outline-none text-black pb-4"
+                  >
+                    <option value="">
+                      {foundedtask?.project?.length > 0
+                        ? foundedtask?.project
+                        : "None selected"}
+                    </option>
+                    {projects.map((project, index) => (
+                      <option key={index} value={project.title}>
+                        {project.title}
+                      </option>
+                    ))}
+                  </select>
+                  <span
+                    className="absolute left-2 top-0 -translate-y-1/2
+                scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+                peer-focus:scale-0
+                "
+                  >
+                    Specific Project
                   </span>
                 </label>
                 <label htmlFor="module" className="relative block w-full">

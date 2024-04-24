@@ -7,11 +7,14 @@ import { useGetUser } from "../../hooks/get-user";
 import { useGetAllRequirement } from "../../hooks/get-req";
 
 const ReqGathering = () => {
-  const [value, setValue] = useState("");
+  const [project, setProject] = useState("");
+  // const [createdBy, setCreatedBy] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useGetUser();
   const { requirements } = useGetAllRequirement();
   console.log("Requirements All: ", requirements);
+  // const uniqueCreators = new Set(requirements.map((req) => req.createdBy));
+  const uniqueProject = new Set(requirements.map((req) => req.project));
 
   return (
     <div className="w-full h-full px-4 md:px-8 lg:px-12 xl:px-24 xxl:px-48">
@@ -27,16 +30,18 @@ const ReqGathering = () => {
             <select
               name=""
               id=""
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
+              value={project}
+              onChange={(e) => setProject(e.target.value)}
               className="px-4 py-2 border-black border-2 text-white bg-slate-700"
             >
-              <option value="">Requirement Created By:</option>
-              {requirements.map((options, index) => (
-                <option value={options.module} key={index}>
-                  {options.createdBy}
-                </option>
-              ))}
+              <option value="">Filter using project</option>
+              {requirements
+                .filter((req) => req.project)
+                .map((req, index) => (
+                  <option value={req.project} key={index}>
+                    {req.project}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -54,7 +59,7 @@ const ReqGathering = () => {
         </div>
         {/*Requirement Table*/}
         <div className="pb-4">
-          <RequirementGatheringTable project={value} />
+          <RequirementGatheringTable project={project} />
         </div>
       </div>
     </div>
@@ -62,3 +67,20 @@ const ReqGathering = () => {
 };
 
 export default ReqGathering;
+
+// <div className="max-w-max flex items-center gap-4">
+//             <select
+//               name=""
+//               id=""
+//               value={createdBy}
+//               onChange={(e) => setCreatedBy(e.target.value)}
+//               className="px-4 py-2 border-black border-2 text-white bg-slate-700"
+//             >
+//               <option value="">Requirement Created By:</option>
+//               {Array.from(uniqueCreators).map((creator, index) => (
+//                 <option value={creator} key={index}>
+//                   {creator}
+//                 </option>
+//               ))}
+//             </select>
+//           </div>

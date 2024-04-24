@@ -16,6 +16,7 @@ export default function ReqContextProvider({ children }) {
           Authorization: `Bearer ${token}`,
         },
       });
+      toast.success("Requirement added successfully");
     } catch (error) {
       console.log(error);
     }

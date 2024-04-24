@@ -4,13 +4,17 @@ import { FiAlertCircle } from "react-icons/fi";
 import { FaProjectDiagram } from "react-icons/fa";
 import { useGetUser } from "../../hooks/get-user";
 import { ReqContext } from "../../context/ReqContext";
+import { useGetAllProject } from "../../hooks/get-project";
 
 const AddReq = ({ isOpen, setIsOpen }) => {
   const { user } = useGetUser();
+  const { projects } = useGetAllProject();
+
   const [data, setData] = useState({
     title: "",
     requirement: "",
     priority: "",
+    project: "",
     module: "",
     createdBy: "",
   });
@@ -46,6 +50,7 @@ const AddReq = ({ isOpen, setIsOpen }) => {
       setData({
         title: "",
         requirement: "",
+        project: "",
         priority: "",
         module: "",
       });
@@ -105,7 +110,7 @@ const AddReq = ({ isOpen, setIsOpen }) => {
                     type="text"
                     id="requirement"
                     cols={3}
-                    rows={5}
+                    rows={4}
                     className="px-2 peer w-full rounded border border-neutral-400 p-4 text-base transition-shadow focus:ring-1 focus:ring-offset-0 focus:border-indigo-400 focus:outline-none text-black"
                     value={data.requirement}
                     onChange={handleChange}
@@ -119,6 +124,31 @@ const AddReq = ({ isOpen, setIsOpen }) => {
                     Requirement
                   </span>
                 </label>
+                <label htmlFor="" className="relative block w">
+                  <select
+                    id=""
+                    value={data.project}
+                    onChange={(e) =>
+                      setData({ ...data, project: e.target.value })
+                    }
+                    className="px-2 peer w-full rounded border border-neutral-400 p-4 text-base transition-shadow focus:ring-1 focus:ring-offset-0 focus:border-indigo-400 focus:outline-none text-black pb-4"
+                  >
+                    <option value="">Select Project</option>
+                    {projects.map((project, index) => (
+                      <option key={index} value={project.title}>
+                        {project.title}
+                      </option>
+                    ))}
+                  </select>
+                  <span
+                    className="absolute left-2 top-0 -translate-y-1/2
+                scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+                peer-focus:scale-0
+                "
+                  >
+                    Specific Project
+                  </span>
+                </label>
                 <label htmlFor="module" className="relative block w-full">
                   <textarea
                     type="text"
@@ -129,6 +159,7 @@ const AddReq = ({ isOpen, setIsOpen }) => {
                     onChange={handleChange}
                     className="px-2 peer w-full rounded border border-neutral-400 p-4 text-base transition-shadow focus:ring-1 focus:ring-offset-0 focus:border-indigo-400 focus:outline-none text-black"
                   />
+
                   <span
                     className="absolute left-2 top-0 -translate-y-1/2
                 scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform

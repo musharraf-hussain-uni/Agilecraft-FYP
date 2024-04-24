@@ -26,10 +26,12 @@ export const GetSingleRequirement = async (req, res) => {
 
 export const AddRequirement = async (req, res) => {
   try {
-    const { title, requirement, module, priority, createdBy } = req.body;
+    const { title, requirement, module, priority, createdBy, project } =
+      req.body;
     if (
       title.length === 0 ||
       requirement.length == 0 ||
+      project.length == 0 ||
       module.length == 0 ||
       priority.length == 0 ||
       createdBy.length == 0
@@ -41,6 +43,7 @@ export const AddRequirement = async (req, res) => {
     const newRequirement = new Requirements({
       title,
       requirement,
+      project,
       module,
       priority,
       createdBy,
@@ -55,11 +58,13 @@ export const AddRequirement = async (req, res) => {
 
 export const UpdateRequirement = async (req, res) => {
   try {
-    const { title, requirement, module, priority, updatedBy } = req.body;
+    const { title, requirement, project, module, priority, updatedBy } =
+      req.body;
 
     const updateFields = {};
     if (title) updateFields.title = title;
     if (requirement) updateFields.requirement = requirement;
+    if (project) updateFields.project = project;
     if (module) updateFields.module = module;
     if (priority) updateFields.priority = priority;
     if (updatedBy) updateFields.updatedBy = updatedBy;
