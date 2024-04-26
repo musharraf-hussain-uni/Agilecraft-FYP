@@ -27,7 +27,6 @@ export default function AuthContextProvider() {
       localStorage.setItem("access_token", data.token);
       setIsLogged(true);
       navigate("/dashboard");
-      window.location.reload();
       toast.success(`User logged in succesfully`);
     } catch (error) {
       console.log("Error during login:", error.response.data.message);
@@ -55,7 +54,7 @@ export default function AuthContextProvider() {
       localStorage.removeItem("access_token");
       setIsLogged(false);
       navigate("/", { replace: true });
-      toast.success(data.message);
+      toast.success(`${data.message}!`);
     } catch (error) {
       console.log(error);
     }

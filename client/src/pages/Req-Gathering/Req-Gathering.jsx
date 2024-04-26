@@ -13,8 +13,6 @@ const ReqGathering = () => {
   const { user } = useGetUser();
   const { requirements } = useGetAllRequirement();
   console.log("Requirements All: ", requirements);
-  // const uniqueCreators = new Set(requirements.map((req) => req.createdBy));
-  const uniqueProject = new Set(requirements.map((req) => req.project));
 
   return (
     <div className="w-full h-full px-4 md:px-8 lg:px-12 xl:px-24 xxl:px-48">

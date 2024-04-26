@@ -17,7 +17,7 @@ const ProtectedRoutes = ({ children }) => {
     }
   }, [isLogged, navigate]);
 
-  return loading ? null : <>{children}</>; // Render children only after loading
+  return loading ? null : <>{children}</>;
 };
 
 export default ProtectedRoutes;

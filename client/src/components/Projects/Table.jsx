@@ -51,28 +51,47 @@ const Table = ({ tasks, loading }) => {
   const TableHeader = () => (
     <thead className="w-full border-b border-gray-300 dark:border-gray-600">
       <tr className="w-full text-black dark:text-white text-left">
-        <th className="py-2">Project Name</th>
-        <th className="py-2">Project Priority</th>
-        <th className="py-2 line-clamp-1">Created At</th>
-        <th className="py-2">Assets</th>
-        <th className="py-2">Team</th>
+        <th className="py-2 text-xs lg:text-base text-center lg:text-left	">
+          Id
+        </th>
+        <th className="py-2 text-xs lg:text-base text-center lg:text-left">
+          Project Name
+        </th>
+        <th className="py-2 text-xs lg:text-base text-center lg:text-left">
+          Priority
+        </th>
+        <th className="py-2 text-xs lg:text-base hidden lg:block text-center lg:text-left">
+          Created At
+        </th>
+        <th className="py-2 text-xs lg:text-base text-center lg:text-left">
+          Assets
+        </th>
+        <th className="py-2 text-xs lg:text-base text-center lg:text-left">
+          Team
+        </th>
+        <th className="py-2 text-xs lg:text-base text-center lg:text-left">
+          Actions
+        </th>
       </tr>
     </thead>
   );
 
-  const TableRow = ({ task }) => (
-    <tr className="border-b border-gray-200 text-gray-600 hover:bg-gray-300/10">
+  const TableRow = ({ task, sno }) => (
+    <tr className="border-b space-x-4 border-gray-200 text-gray-600 hover:bg-gray-300/10">
       <td className="py-2">
-        <p className="w-full line-clamp-2 text-base text-white">
-          {"rowsWithId"}
+        <p className="w-full line-clamp-2 text-xs lg:text-base text-white">
+          {sno + 1}
         </p>
       </td>
       <td className="py-2">
         <div className="flex items-center gap-2">
           <div
-            className={clsx("w-4 h-4 rounded-full", TASK_TYPE[task.stage])}
+            className={clsx(
+              "w-4 h-4 rounded-full opacity-0 md:opacity-100",
+              TASK_TYPE[task.stage]
+            )}
           />
-          <p className="w-full line-clamp-2 text-base text-white">
+          <p className="w-full line-clamp-2 text-xs lg:text-base antialiased text-white">
             {task?.title}
           </p>
         </div>
@@ -83,13 +102,13 @@ const Table = ({ tasks, loading }) => {
           <span className={clsx("text-lg", PRIOTITYSTYLES[task?.priority])}>
             {ICONS[task?.priority]}
           </span>
-          <span className="capitalize line-clamp-1 text-white">
+          <span className="capitalize text-xs lg:text-base antialiased line-clamp-1 text-white">
             {task?.priority}
           </span>
         </div>
       </td>
 
-      <td className="py-2">
+      <td className="py-2 hidden lg:block">
         <span className="text-sm text-gray-300">
           {formatDate(new Date(task?.date))}
         </span>
@@ -123,15 +142,15 @@ const Table = ({ tasks, loading }) => {
           ))}
         </div>
       </td>
-      <td className="flex py-4 items-center gap-2 md:gap-4">
+      <td className="flex py-4 items-center gap-0 md:gap-4">
         <div
-          className="text-blue-400 sm:px-0 text-sm md:text-base cursor-pointer"
+          className="text-blue-400 sm:px-0 text-xs md:text-base cursor-pointer"
           onClick={() => handleClick(task._id)}
         >
           <GrFormView size={25} />
         </div>
         <div
-          className="text-green-400 sm:px-0 text-sm md:text-base cursor-pointer"
+          className="text-green-400 sm:px-0 text-xs md:text-base cursor-pointer"
           onClick={() => setId(task._id)}
         >
           <MdOutlineUpdate size={20} />
@@ -163,7 +182,7 @@ const Table = ({ tasks, loading }) => {
             <TableHeader />
             <tbody>
               {tasks.map((item, index) => (
-                <TableRow key={index} task={item} />
+                <TableRow key={index} sno={index} task={item} />
               ))}
             </tbody>
           </table>

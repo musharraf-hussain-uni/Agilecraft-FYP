@@ -32,6 +32,6 @@ const TestSchema = Schema({
   },
 });
 
-const Test = mongoose.model.Test || mongoose.model("Test", TestSchema);
+const Test = mongoose.model("Test", TestSchema);
 
 export default Test;

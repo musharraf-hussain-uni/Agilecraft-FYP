@@ -12,7 +12,7 @@ const ITEMS_PER_PAGE = 4;
 
 const RequirementGatheringTable = ({ project }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [id, setId] = useState(null);
+  const [updateId, setUpdateId] = useState(null);
   const [viewId, setViewId] = useState(null);
 
   const { requirements } = useGetAllRequirement();
@@ -26,6 +26,7 @@ const RequirementGatheringTable = ({ project }) => {
     ? requirements.filter((item) => item.project === project)
     : currentItems;
 
+  console.log("filter", filteredProject);
   const totalPages = Math.ceil(requirements.length / ITEMS_PER_PAGE);
 
   const onPageChange = (pageNumber) => {
@@ -43,32 +44,48 @@ const RequirementGatheringTable = ({ project }) => {
   const TableHeader = () => (
     <thead className="border-b bg-slate-800 border-gray-300">
       <tr className="text-white text-left">
-        <th className="p-2 w-[5%]">S.NO</th>
-        <th className="p-2 w-1/3">Title</th>
-        <th className="p-2 w-1/3">Requirements</th>
-        <th className="p-2 w-1/6">Created By</th>
-        <th className="p-2 w-1/3">Updated By</th>
-        <th className="p-2 w-1/6">Actions</th>
+        <th className="p-2 w-[5%] text-xs lg:text-base text-center lg:text-left">
+          Id
+        </th>
+        <th className="p-2 w-1/3 text-xs lg:text-base text-center lg:text-left">
+          Title
+        </th>
+        <th className="p-2 w-1/3 text-xs lg:text-base text-center lg:text-left">
+          Requirements
+        </th>
+        <th className="p-2 w-1/6 text-xs lg:text-base text-center lg:text-left">
+          Created By
+        </th>
+        <th className="p-2 w-1/3 text-xs lg:text-base text-center lg:text-left">
+          Updated By
+        </th>
+        <th className="p-2 w-1/6 text-xs lg:text-base text-center lg:text-left">
+          Actions
+        </th>
       </tr>
     </thead>
   );
 
-  const TableRow = ({ task }) => (
+  const TableRow = ({ id, task }) => (
     <tr className="border-b border-gray-200 text-white bg-black ">
       <td className="p-2">
-        <p className="text-white">{task._id}</p>
+        <p className="text-white">{id + 1}</p>
       </td>
 
       <td className="p-2">
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-2">
-            <p className="text-white">{task.title}</p>
+            <p className="text-white text-xs lg:text-base antialiased">
+              {task.title}
+            </p>
           </div>
         </div>
       </td>
       <td className="p-2">
         <div className="flex items-center gap-2">
-          <p className="text-white">{task.requirement.slice(0, 90)}</p>
+          <p className="text-white text-xs lg:text-base antialiased">
+            {task.requirement.slice(0, 50)}
+          </p>
         </div>
       </td>
 
@@ -101,7 +118,7 @@ const RequirementGatheringTable = ({ project }) => {
         </div>
         <div
           className="text-green-400 sm:px-0 text-sm md:text-base cursor-pointer"
-          onClick={() => setId(task._id)}
+          onClick={() => setUpdateId(task._id)}
         >
           <MdOutlineUpdate size={20} />
         </div>
@@ -122,10 +139,10 @@ const RequirementGatheringTable = ({ project }) => {
         />
       )}
 
-      {id === task._id && (
+      {updateId === task._id && (
         <UpdateRequirement
-          isOpen={id === task._id}
-          setIsOpen={setId}
+          isOpen={updateId === task._id}
+          setIsOpen={setUpdateId}
           id={task._id}
         />
       )}
@@ -145,8 +162,8 @@ const RequirementGatheringTable = ({ project }) => {
                 </td>
               </tr>
             )}
-            {filteredProject?.map((item, index) => (
-              <TableRow key={index} task={item} />
+            {filteredProject.map((item, index) => (
+              <TableRow key={index} id={index} task={item} />
             ))}
           </tbody>
         </table>

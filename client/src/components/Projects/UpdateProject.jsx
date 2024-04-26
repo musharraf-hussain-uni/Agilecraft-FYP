@@ -39,13 +39,13 @@ const UpdateProject = ({ isOpen, setIsOpen, id }) => {
     setAssets(selectedFiles);
   };
 
-  const errorMessage = (
-    <div className="toast toast-bottom transition-all ease-in-out z-50">
-      <div className="alert alert-error text-white">
-        <span>Title or Description or Deadline Date not added.</span>
-      </div>
-    </div>
-  );
+  // const errorMessage = (
+  //   <div className="toast toast-bottom transition-all ease-in-out z-50">
+  //     <div className="alert alert-error text-white">
+  //       <span>Title or Description or Deadline Date not added.</span>
+  //     </div>
+  //   </div>
+  // );
   const submitHandler = async (e) => {
     try {
       e.preventDefault();
