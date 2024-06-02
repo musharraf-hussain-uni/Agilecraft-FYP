@@ -4,6 +4,7 @@ import "./Login.css"; // Import the CSS file for styling
 import { Link } from "react-router-dom";
 import vectorLogin from "./vectorLogin.png"; // Adjust the path based on your actual file structure
 import { AuthContext } from "../../context/AuthContext";
+import logo from "./AgileLogo.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -29,9 +30,9 @@ const Login = () => {
         {/* Right Panel */}
         <div className="right-panel">
           <div className="right-panel-content">
-            <img src="" alt="logo" className="logo" />
-            <h1>AGILE CRAFT</h1>
-            <h3>Welcome to AgileCraft!! 🌟</h3>
+            <img src={logo} alt="logo" className="logo" />
+            <h1>Enhance Tasks Management System</h1>
+            <h3>Welcome to ETMS!! 🌟</h3>
             <p>
               Please sign-in to your account and start the <br />
               journey

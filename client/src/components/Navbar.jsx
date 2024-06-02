@@ -43,7 +43,7 @@ const Navbar = () => {
             WebkitTextFillColor: "transparent",
           }}
         >
-          AgileCraft
+          E.T.M.S
         </h1>
       </div>
       <div className="flex gap-10">

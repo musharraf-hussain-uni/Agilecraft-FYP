@@ -13,6 +13,7 @@ const SidebarMenu = ({
   L6,
   L7,
   L8,
+  L9,
   link1,
   link2,
   link3,
@@ -20,9 +21,16 @@ const SidebarMenu = ({
   link5,
   link6,
   link7,
+  Link9,
   Icon1,
   Icon2,
   Icon3,
+  Icon4,
+  Icon5,
+  Icon6,
+  Icon7,
+  Icon8,
+  Icon9,
   userRole,
   setIsOpen,
   open,
@@ -30,7 +38,7 @@ const SidebarMenu = ({
   const { pathname } = useLocation();
   const { logout } = useContext(AuthContext);
 
-  let conditon = userRole == "admin" || userRole == "Project Manager";
+  let condition = userRole == "admin" || userRole == "Project Manager";
 
   const handleLogout = async () => {
     await logout();
@@ -73,7 +81,7 @@ const SidebarMenu = ({
             )}
           </>
         )}
-        {conditon && L3 && (
+        {condition && L3 && (
           <li
             onClick={() => setIsOpen(!open)}
             className={`sidebar-list-items ${
@@ -93,7 +101,7 @@ const SidebarMenu = ({
               pathname === link4 ? "active" : ""
             }`}
           >
-            <Icon1 className="sidebar-icons" />
+            <Icon4 className="sidebar-icons" />
             <Link to={link4} className="links w-full">
               {L4}
             </Link>
@@ -106,7 +114,7 @@ const SidebarMenu = ({
               pathname === link5 ? "active" : ""
             }`}
           >
-            <Icon1 className="sidebar-icons" />
+            <Icon5 className="sidebar-icons" />
             <Link to={link5} className="links w-full">
               {L5}
             </Link>
@@ -119,7 +127,7 @@ const SidebarMenu = ({
               pathname === link6 ? "active" : ""
             }`}
           >
-            <Icon1 className="sidebar-icons" />
+            <Icon6 className="sidebar-icons" />
             <Link to={link6} className="links w-full">
               {L6}
             </Link>
@@ -132,16 +140,29 @@ const SidebarMenu = ({
               pathname === link7 ? "active" : ""
             }`}
           >
-            <Icon1 className="sidebar-icons" />
+            <Icon7 className="sidebar-icons" />
             <Link to={link7} className="links w-full">
               {L7}
+            </Link>
+          </li>
+        )}
+        {L9 && (
+          <li
+            onClick={() => setIsOpen(!open)}
+            className={`sidebar-list-items ${
+              pathname === Link9 ? "active" : ""
+            }`}
+          >
+            <Icon9 className="sidebar-icons" />
+            <Link to={Link9} className="links w-full">
+              {L9}
             </Link>
           </li>
         )}
         {L8 && (
           <li className={`flex items-center px-2 w-full cursor-pointer`}>
             <div onClick={handleLogout} className="text-[#F2F4F7] flex gap-6">
-              <Icon1 className="text-[#F2F4F7]" />
+              <Icon8 className="text-[#F2F4F7]" />
               {L8}
             </div>
           </li>

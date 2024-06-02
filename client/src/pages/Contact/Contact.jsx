@@ -12,8 +12,8 @@ const Contact = () => {
   return (
     <div id="contact" className="contact-container">
       <div className={`contact-info bg-contact-back `}>
-        <h3 className="text-3xl font-bold">JOIN OUR WEBSITE</h3>
-        <p className="text-[#3570c1] text-3xl my-10">
+        <h3 className="text-2xl font-bold">JOIN OUR WEBSITE</h3>
+        <p className="text-[#276fd5] text-3xl my-10">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, sint.
         </p>
         <p className="text-white text-xl">Your Company Address</p>
@@ -22,10 +22,10 @@ const Contact = () => {
           Saturday - Sunday 9:00 am - 10:00 pm
         </p>
         <a href="#" className="text-[#87cae4] text-xl">
-          ContactSupport@agile.com
+          ContactSupport@etms.com
         </a>
         <br />
-        <h2 className="text-blue-400 text-xl mt-10">Follow us</h2>
+        <h2 className="text-blue-300 text-xl mt-10">Follow us</h2>
         <div className="social-links">
           <ContactIcon
             to="https://www.facebook.com/"
@@ -54,7 +54,7 @@ const Contact = () => {
       </div>
 
       <div className="contact-form">
-        <h1>Contact Us</h1>
+        <h1 className="text-[#0e3e81] text-2xl">Contact Us</h1>
         <Box
           component="form"
           sx={{

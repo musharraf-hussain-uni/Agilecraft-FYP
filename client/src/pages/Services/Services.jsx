@@ -1,5 +1,5 @@
 import "./Services.css"; // Import the CSS file for styling
-import requirmentManagement from "./img/RequirementGethering.png";
+import requirementManagement from "./img/RequirementGathering.png";
 import BugTracking from "./img/BugTracking.png";
 import TestCaseManagement from "./img/testCase.png";
 import TestExecution from "./img/testExecute.png";
@@ -14,7 +14,7 @@ const Services = () => {
       <div className="services-container">
         <div className="services-column">
           <ServiceCard
-            imageSrc={requirmentManagement}
+            imageSrc={requirementManagement}
             serviceName="Requirements Management"
             slogan="Streamline project requirements"
           />

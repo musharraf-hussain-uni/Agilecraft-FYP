@@ -1,8 +1,13 @@
 import "./sidebar.module.css";
-import LineStyleIcon from "@mui/icons-material/LineStyle";
+import LogoutIcon from "@mui/icons-material/Logout";
 import PersonIcon from "@mui/icons-material/Person";
 import StorefrontIcon from "@mui/icons-material/Storefront";
+import HistoryEduOutlinedIcon from "@mui/icons-material/HistoryEduOutlined";
+import BugReportIcon from "@mui/icons-material/BugReport";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import CodeOutlinedIcon from "@mui/icons-material/CodeOutlined";
+import AccountTreeOutlinedIcon from "@mui/icons-material/AccountTreeOutlined";
 import SidebarMenu from "../Sidebar-menu/Sidebar-menu";
 import avatarImg from "../../assets/avatar.png";
 import { RxCrossCircled } from "react-icons/rx";
@@ -47,7 +52,7 @@ const Sidebar = ({ setOpen, isOpen }) => {
         <SidebarMenu
           title="Dashboard"
           L1="Home"
-          Icon1={LineStyleIcon}
+          Icon1={StorefrontIcon}
           link1="/dashboard"
           setIsOpen={setOpen}
           open={isOpen}
@@ -57,23 +62,29 @@ const Sidebar = ({ setOpen, isOpen }) => {
           L2="Users"
           L3="Projects"
           L4="Requirement Gathering"
-          L5="Testing"
+          L5="Test Case"
           L6="Bug Tracking"
-          L7="Reviews"
-          Icon1={PersonIcon}
-          Icon2={StorefrontIcon}
+          L7="Code Reviews"
+          L9="Reporting"
+          Icon2={PersonIcon}
           Icon3={TrendingUpIcon}
+          Icon4={ListAltIcon}
+          Icon5={HistoryEduOutlinedIcon}
+          Icon6={BugReportIcon}
+          Icon7={CodeOutlinedIcon}
+          Icon9={AccountTreeOutlinedIcon}
           link2="/dashboard/user"
           link3="/dashboard/projects"
           link4="/dashboard/requirement-gathering"
           link5="/dashboard/testing"
           link6="/dashboard/bug-tracking"
           link7="/dashboard/reviews"
+          link9="/dashboard/reporting"
           userRole={role}
           setIsOpen={setOpen}
           open={isOpen}
         />
-        <SidebarMenu title="Access" L8="Logout" Icon1={LineStyleIcon} />
+        <SidebarMenu title="Access" L8="Logout" Icon8={LogoutIcon} />
       </div>
     </div>
   );

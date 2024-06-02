@@ -33,12 +33,21 @@
   }
   
   .logo {
-    width: 80px;
+    width: 90px;
+    margin: 0 120px;
+    display: block;
+    margin-top: -50px;
+    margin-bottom: 20px;
   }
   
   form {
-    margin-top: 20px;
+    margin-top: 30px;
     max-width: 320px;
+  }
+  h1{
+    font-size: 20px;
+    font-weight: 900;
+    color: #003175;
   }
   h3{
     font-weight: 900;
