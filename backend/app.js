@@ -8,6 +8,7 @@ import UserRouter from "./Routes/userRoutes.js";
 import RequirementRoutes from "./Routes/reqGatheringRoutes.js";
 import ProjectRoutes from "./Routes/projectRoutes.js";
 import TestRouter from "./Routes/testRoutes.js";
+import BugRouter from "./Routes/bugTrackingRoutes.js";
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ app.use("/api/users", UserRouter);
 app.use("/api/req-gathering", RequirementRoutes);
 app.use("/api/project", ProjectRoutes);
 app.use("/api/test", TestRouter);
+app.use("/api/bug-tracking", BugRouter);
 
 // Server
 const PORT = 3001 || process.env.PORT;

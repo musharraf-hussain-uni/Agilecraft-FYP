@@ -11,7 +11,7 @@ const TestSchema = Schema({
     type: String,
   },
   steps: {
-    type: Array,
+    type: String,
     required: true,
   },
   data: {

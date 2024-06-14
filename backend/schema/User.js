@@ -27,6 +27,7 @@ const userSchema = new Schema(
       type: String,
     },
     projects: [{ type: mongoose.Types.ObjectId, ref: "Project" }],
+    bugTracking: [{ type: mongoose.Types.ObjectId, ref: "BugTracking" }],
   },
 
   {
