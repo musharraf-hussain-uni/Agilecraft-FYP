@@ -109,8 +109,8 @@ const UserList = ({ users, setUsers, setOpen, setId }) => {
   };
 
   return (
-    <div className="p-5 mt-10 bg-white">
-      <Box sx={{ height: 400, width: "100%" }}>
+    <div className="p-5 mt-10">
+      <Box sx={{ height: 400, width: "100%", backgroundColor: "#ddd" }}>
         <DataGrid
           rows={rowsWithId}
           columns={columns}

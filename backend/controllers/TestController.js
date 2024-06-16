@@ -99,17 +99,21 @@ export const UpdateTest = async (req, res) => {
 };
 
 export const DeleteTest = async (req, res) => {
+  const { id } = req.params; // Extract the id from request parameters
+
   try {
-    const deleteTest = await Test.findByIdAndDelete(req.params.id);
-    if (!deleteTest) {
-      res.status(404).json({ message: "Test case can't be deleted!" });
+    const deletedTest = await Test.findByIdAndDelete(id);
+
+    if (!deletedTest) {
+      return res.status(404).json({ message: "Test case not found" });
     }
 
-    res.status(200).json({ message: "Test Case deleted successfully" });
-    res.status(200).json({ message: `Delete test ${id}` });
+    res.status(200).json({
+      message: "Test case deleted successfully",
+      deletedTestId: id, // Optionally include the deleted test's ID
+    });
   } catch (error) {
-    res.status(404).json({ message: "Internal Server Error" });
+    console.error("Error deleting test case:", error); // Log the actual error
+    res.status(500).json({ message: "Internal server error" }); // Use 500 for server errors
   }
 };
-
-

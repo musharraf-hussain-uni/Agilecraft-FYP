@@ -14,7 +14,7 @@ TestRouter.get("/:id", verifyToken, GetTest);
 
 TestRouter.get("/", GetAllTest);
 
-TestRouter.post("/create", verifyToken, CreateTest);
+TestRouter.post("/create", CreateTest);
 
 TestRouter.put("/update/:id", verifyToken, UpdateTest);
 

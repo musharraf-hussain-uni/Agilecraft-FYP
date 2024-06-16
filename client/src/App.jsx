@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AdminDashboard from "./pages/AdminDashboard/Dashboard";
 import UserPage from "./pages/UserPage/UserPage";
@@ -17,6 +17,9 @@ import UserContextProvider from "./context/UserContext.jsx";
 import SingleProject from "./pages/Projects/SingleProject.jsx";
 import ProjectContextProvider from "./context/ProjectContext.jsx";
 import ReqContextProvider from "./context/ReqContext.jsx";
+import TestCaseContextProvider from "./context/TestCaseContext.jsx";
+import SingleTestCase from "./pages/Testing/SingleTestCase.jsx";
+import UpdateTestCase from "./pages/Testing/UpdateTestCase.jsx";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +78,14 @@ const router = createBrowserRouter([
             path: "/dashboard/user/:id",
             element: <Reviews />,
           },
+          {
+            path: "/dashboard/testing/:id",
+            element: <SingleTestCase />,
+          },
+          {
+            path: "/dashboard/testing/update/:id",
+            element: <UpdateTestCase />,
+          },
         ],
       },
     ],
@@ -84,14 +95,16 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <>
-      <ReqContextProvider>
-        <ProjectContextProvider>
-          <UserContextProvider>
-            <Toaster />
-            <RouterProvider router={router} />
-          </UserContextProvider>
-        </ProjectContextProvider>
-      </ReqContextProvider>
+      <TestCaseContextProvider>
+        <ReqContextProvider>
+          <ProjectContextProvider>
+            <UserContextProvider>
+              <Toaster />
+              <RouterProvider router={router} />
+            </UserContextProvider>
+          </ProjectContextProvider>
+        </ReqContextProvider>
+      </TestCaseContextProvider>
     </>
   );
 };

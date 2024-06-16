@@ -53,7 +53,7 @@ const DashboardLayout = () => {
       <div
         className={`${
           isOpen ? "blur-md" : null
-        } transition-all w-full bg-[#F2F4F7]`}
+        } transition-all w-full bg-[#F2F4F7] h-full`}
       >
         <div className="px:4 md:px-8 lg:px-12 xl:px-24 xxl:px-36">
           <DashboardHeader />

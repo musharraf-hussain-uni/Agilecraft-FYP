@@ -28,11 +28,15 @@ export const GetAllTestCases = () => {
     fetchTestCases();
   }, [fetchTestCases]); // Dependency on useCallback-wrapped function
 
-  return { data, loading, error, refetch: fetchTestCases }; // Rename to refetch
+  const mutate = () => {
+    fetchTestCases();
+  };
+
+  return { data, loading, error, mutate }; // Rename to refetch
 };
 
 export const GetTestCase = (id) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -55,5 +59,8 @@ export const GetTestCase = (id) => {
     fetchTestCase();
   }, [fetchTestCase]);
 
-  return { data, loading, error, refetch: fetchTestCase };
+  const mutate = () => {
+    fetchTestCase();
+  };
+  return { data, loading, error, mutate };
 };

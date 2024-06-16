@@ -27,7 +27,7 @@ const UserPage = () => {
   // console.log(error);
 
   return (
-    <div className="bg-[#F2F4F7] mb-8 px-4 md:px-20 lg:px-20 xl:px-24 xxl:px-48 mt-24 md:mt-0">
+    <div className="mb-8 px-4 md:px-20 lg:px-20 xl:px-24 xxl:px-48 mt-24 md:mt-0">
       <div className="flex justify-between items-center rounded-md">
         <h1 className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-black font-bold md:pl-12 pl-16">
           User

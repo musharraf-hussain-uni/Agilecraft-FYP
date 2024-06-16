@@ -19,10 +19,9 @@ const UserPage = () => {
   //   }
 
   return (
-    <div className="bg-[#F2F4F7] h-dvh mb-8 px-4 md:px-20 lg:px-20 xl:px-24 xxl:px-48 md:mt-0">
+    <div className="mb-8 px-4 md:px-20 lg:px-20 xl:px-24 xxl:px-48 md:mt-0">
       <div className="flex justify-center items-center rounded-md">
         <div className="mr-4 md:mr-6">
-          {/* You can open the modal using document.getElementById('ID').showModal() method */}
           <div className=" bg-slate-900 grid place-content-center">
             <button
               onClick={() => setIsOpen(true)}
