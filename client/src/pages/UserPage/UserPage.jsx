@@ -10,39 +10,33 @@ const UserPage = () => {
   const [openAdd, setOpenAdd] = useState(false);
   const [id, setId] = useState(null);
 
-  const { allUsers, loading, error, setAllUsers } = useGetAllUser();
+  const { data, loading, mutate } = useGetAllUser();
 
   if (loading) {
     return (
-      <div className="h-dvh text-center">
-        <span className="loading loading-spinner text-black"></span>
+      <div className="w-full h-full text-center">
+        <span className="loading loading-spinner bg-[#003175] loading-lg"></span>
       </div>
     );
   }
 
-  // if (error) {
-  //   return <div>Error...</div>;
-  // }
-
-  // console.log(error);
-
   return (
     <div className="mb-8 px-4 md:px-20 lg:px-20 xl:px-24 xxl:px-48 mt-24 md:mt-0">
       <div className="flex justify-between items-center rounded-md">
-        <h1 className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-black font-bold md:pl-12 pl-16">
+        <h1 className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-[#003175] font-bold md:pl-12 pl-16">
           User
         </h1>
 
         <div className="mr-4 md:mr-6">
           <button
-            className="btn text-lg md:text-md lg:text-lg xl:text-xl bg-gray-300 rounded-lg"
+            className="btn text-lg md:text-md lg:text-lg xl:text-xl bg-gradient-to-tr from-blue-600 to-gray-600 text-white rounded-lg"
             onClick={() => setOpenAdd(!openAdd)}
           >
             <IoMdAdd /> Add User
           </button>
 
           <div>
-            <AddUser isOpen={openAdd} setIsOpen={setOpenAdd} />
+            <AddUser isOpen={openAdd} setIsOpen={setOpenAdd} mutate={mutate} />
           </div>
         </div>
       </div>
@@ -50,16 +44,22 @@ const UserPage = () => {
       {/* All User Data Fields*/}
       <div>
         <UserList
-          users={allUsers}
-          setUsers={setAllUsers}
+          data={data}
           isOpen={isOpen}
           setOpen={setIsOpen}
           setId={setId}
+          loading={loading}
+          mutate={mutate}
         />
       </div>
 
       <div>
-        <UpdateUser isOpen={isOpen} setIsOpen={setIsOpen} id={id} />
+        <UpdateUser
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          id={id}
+          mutate={mutate}
+        />
       </div>
     </div>
   );

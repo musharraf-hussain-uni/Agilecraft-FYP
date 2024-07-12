@@ -58,7 +58,7 @@ export const FetchUserDashBoard = async (req, res) => {
       const users = await User.find()
         .select("-password")
         .sort({ _id: -1 })
-        .limit(5);
+        .limit(10);
       return res.status(200).json(users);
     } else {
       return res.status(403).json({ error: "Forbidden" });
@@ -141,49 +141,5 @@ export const changePassword = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal Server Error" });
-  }
-};
-
-export const GetAllNotification = async (req, res) => {
-  const userId = req.user;
-  console.log("Notification", userId);
-  try {
-    const notice = await Notice.find({
-      team: userId,
-      isRead: { $nin: [userId] },
-    }).populate("projects", "title");
-
-    res.status(201).json(notice);
-  } catch (error) {
-    console.log(error);
-    return res.status(400).json({ status: false, message: error.message });
-  }
-};
-
-// Mark a notification as read by adding the
-
-export const markNotificationRead = async (req, res) => {
-  try {
-    const userId = req.user;
-    const { isReadType, id } = req.query;
-
-    if (isReadType === "all") {
-      await Notice.updateMany(
-        { team: userId, isRead: { $nin: [userId] } },
-        { $push: { isRead: userId } },
-        { new: true }
-      );
-    } else {
-      await Notice.findOneAndUpdate(
-        { _id: id, isRead: { $nin: [userId] } },
-        { $push: { isRead: userId } },
-        { new: true }
-      );
-    }
-
-    res.status(201).json({ status: true, message: "Done" });
-  } catch (error) {
-    console.log(error);
-    return res.status(400).json({ status: false, message: error.message });
   }
 };

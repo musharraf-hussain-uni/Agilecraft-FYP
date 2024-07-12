@@ -6,7 +6,7 @@ import { useGetUser } from "../../hooks/get-user";
 import { ReqContext } from "../../context/ReqContext";
 import { useGetAllProject } from "../../hooks/get-project";
 
-const AddReq = ({ isOpen, setIsOpen }) => {
+const AddReq = ({ isOpen, setIsOpen, mutate }) => {
   const { user } = useGetUser();
   const { projects } = useGetAllProject();
 
@@ -47,6 +47,7 @@ const AddReq = ({ isOpen, setIsOpen }) => {
       e.preventDefault();
       console.log(data);
       await AddRequirement(data);
+      mutate();
       setData({
         title: "",
         requirement: "",
@@ -54,6 +55,7 @@ const AddReq = ({ isOpen, setIsOpen }) => {
         priority: "",
         module: "",
       });
+
       setIsOpen(false);
     } catch (error) {
       console.log(error);
@@ -75,7 +77,7 @@ const AddReq = ({ isOpen, setIsOpen }) => {
             animate={{ scale: 1, rotate: "0deg" }}
             exit={{ scale: 0, rotate: "0deg" }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-gradient-to-br from-violet-600 to-indigo-600 text-white p-6 rounded-lg w-full max-w-lg lg:max-w-xl shadow-xl cursor-default relative overflow-hidden"
+            className="bg-gradient-to-br from-blue-400 to-slate-700 text-white p-6 rounded-lg w-full max-w-lg lg:max-w-xl shadow-xl cursor-default relative overflow-hidden"
           >
             <FiAlertCircle className="text-white/10 rotate-12 text-[250px] absolute z-0 -top-24 -left-24" />
             <div className="relative z-10">
@@ -97,7 +99,7 @@ const AddReq = ({ isOpen, setIsOpen }) => {
                   />
                   <span
                     className="absolute left-2 top-0 -translate-y-1/2
-          scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+          scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
           peer-focus:scale-0
           "
                   >
@@ -117,14 +119,14 @@ const AddReq = ({ isOpen, setIsOpen }) => {
                   />
                   <span
                     className="absolute left-2 top-0 -translate-y-1/2
-                scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+                scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
                 peer-focus:scale-0
                 "
                   >
                     Requirement
                   </span>
                 </label>
-                <label htmlFor="" className="relative block w">
+                <label htmlFor="" className="relative block">
                   <select
                     id=""
                     value={data.project}
@@ -133,7 +135,7 @@ const AddReq = ({ isOpen, setIsOpen }) => {
                     }
                     className="px-2 peer w-full rounded border border-neutral-400 p-4 text-base transition-shadow focus:ring-1 focus:ring-offset-0 focus:border-indigo-400 focus:outline-none text-black pb-4"
                   >
-                    <option value="">Select Project</option>
+                    <option value="">Choose Project</option>
                     {projects.map((project, index) => (
                       <option key={index} value={project.title}>
                         {project.title}
@@ -142,11 +144,11 @@ const AddReq = ({ isOpen, setIsOpen }) => {
                   </select>
                   <span
                     className="absolute left-2 top-0 -translate-y-1/2
-                scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+                scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
                 peer-focus:scale-0
                 "
                   >
-                    Specific Project
+                    Choose Project
                   </span>
                 </label>
                 <label htmlFor="module" className="relative block w-full">
@@ -162,7 +164,7 @@ const AddReq = ({ isOpen, setIsOpen }) => {
 
                   <span
                     className="absolute left-2 top-0 -translate-y-1/2
-                scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+                scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
                 peer-focus:scale-0
                 "
                   >
@@ -180,7 +182,7 @@ const AddReq = ({ isOpen, setIsOpen }) => {
                     />
                     <span
                       className="absolute left-2 top-0 -translate-y-1/2
-                scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+                scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
                 peer-focus:scale-0
                 
                 "
@@ -204,7 +206,7 @@ const AddReq = ({ isOpen, setIsOpen }) => {
                     </select>
                     <span
                       className="absolute left-2 top-0 -translate-y-1/2
-                scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+                scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
                 peer-focus:scale-0
                 "
                     >

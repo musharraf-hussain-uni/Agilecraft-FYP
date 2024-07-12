@@ -10,12 +10,13 @@ import clsx from "clsx";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import { GrFormView } from "react-icons/gr";
+import UpdateProject from "../Projects/UpdateProject";
+import { useState } from "react";
 
-export default function TaskTable({ tasks, loading }) {
+export default function TaskTable({ tasks, loading, mutate }) {
   const navigate = useNavigate();
-  const handleUpdate = (id) => {
-    console.log(id);
-  };
+
+  const [id, setId] = useState("");
 
   const handleClick = (id) => {
     navigate(`/dashboard/projects/${id}`);
@@ -30,7 +31,7 @@ export default function TaskTable({ tasks, loading }) {
   if (loading) {
     return (
       <div className="w-full text-center">
-        <span className="loading loading-dots loading-lg"></span>
+        <span className="loading loading-spinner bg-[#003175] loading-lg"></span>
       </div>
     );
   }
@@ -81,16 +82,25 @@ export default function TaskTable({ tasks, loading }) {
         </div>
         <div
           className="text-green-400 sm:px-0 text-sm md:text-base cursor-pointer"
-          onClick={() => handleUpdate(task._id)}
+          onClick={() => setId(task._id)}
         >
           <MdOutlineUpdate size={20} />
         </div>
       </td>
+
+      {id === task._id && (
+        <UpdateProject
+          isOpen={id === task._id}
+          setIsOpen={setId}
+          id={task._id}
+          mutate={mutate}
+        />
+      )}
     </tr>
   );
 
   return (
-    <div className="w-full md:w-2/3 bg-white px-2 md:px-4 pt-4 pb-4 shadow-md rounded">
+    <div className="w-full md:w-2/3 bg-white px-2 md:px-4 pt-4 pb-4 shadow-2xl rounded-xl">
       <table className="w-full">
         <TableHeader />
         <tbody>

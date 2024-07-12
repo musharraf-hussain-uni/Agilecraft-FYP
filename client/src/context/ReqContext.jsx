@@ -18,7 +18,7 @@ export default function ReqContextProvider({ children }) {
       });
       toast.success("Requirement added successfully");
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
   const UpdateRequirement = async (updateData, id) => {

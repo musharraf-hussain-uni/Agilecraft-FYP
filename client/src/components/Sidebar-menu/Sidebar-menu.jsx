@@ -21,7 +21,7 @@ const SidebarMenu = ({
   link5,
   link6,
   link7,
-  Link9,
+  link9,
   Icon1,
   Icon2,
   Icon3,
@@ -51,7 +51,7 @@ const SidebarMenu = ({
         {L1 && (
           <li
             className={`sidebar-list-items ${
-              pathname === link1 ? "active" : ""
+              pathname === link1 ? "bg-slate-500" : ""
             }`}
           >
             <Icon1 className="sidebar-icons" />
@@ -69,7 +69,7 @@ const SidebarMenu = ({
             {L2 && (
               <li
                 className={`sidebar-list-items ${
-                  pathname === link2 ? "active" : ""
+                  pathname === link2 ? "bg-slate-500" : ""
                 }`}
                 onClick={() => setIsOpen(!open)}
               >
@@ -85,7 +85,7 @@ const SidebarMenu = ({
           <li
             onClick={() => setIsOpen(!open)}
             className={`sidebar-list-items ${
-              pathname === link3 ? "active" : ""
+              pathname === link3 ? "bg-slate-500" : ""
             }`}
           >
             <Icon3 className="sidebar-icons" />
@@ -98,7 +98,7 @@ const SidebarMenu = ({
           <li
             onClick={() => setIsOpen(!open)}
             className={`sidebar-list-items ${
-              pathname === link4 ? "active" : ""
+              pathname === link4 ? "bg-slate-500" : ""
             }`}
           >
             <Icon4 className="sidebar-icons" />
@@ -111,7 +111,7 @@ const SidebarMenu = ({
           <li
             onClick={() => setIsOpen(!open)}
             className={`sidebar-list-items ${
-              pathname === link5 ? "active" : ""
+              pathname === link5 ? "bg-slate-500" : ""
             }`}
           >
             <Icon5 className="sidebar-icons" />
@@ -124,7 +124,7 @@ const SidebarMenu = ({
           <li
             onClick={() => setIsOpen(!open)}
             className={`sidebar-list-items ${
-              pathname === link6 ? "active" : ""
+              pathname === link6 ? "bg-slate-500" : ""
             }`}
           >
             <Icon6 className="sidebar-icons" />
@@ -137,7 +137,7 @@ const SidebarMenu = ({
           <li
             onClick={() => setIsOpen(!open)}
             className={`sidebar-list-items ${
-              pathname === link7 ? "active" : ""
+              pathname === link7 ? "bg-slate-500" : ""
             }`}
           >
             <Icon7 className="sidebar-icons" />
@@ -150,11 +150,11 @@ const SidebarMenu = ({
           <li
             onClick={() => setIsOpen(!open)}
             className={`sidebar-list-items ${
-              pathname === Link9 ? "active" : ""
+              pathname === link9 ? "bg-slate-500" : ""
             }`}
           >
             <Icon9 className="sidebar-icons" />
-            <Link to={Link9} className="links w-full">
+            <Link to={link9} className="links w-full">
               {L9}
             </Link>
           </li>

@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import Table from "../../components/Projects/Table";
-// import { tasks } from "../../assets/data";
 import Pagination from "../../components/Pagination/Pagination";
-import { useGetAllProject } from "../../hooks/get-project";
 
 const ITEMS_PER_PAGE = 4;
 
-const AllProjects = () => {
-  const { projects, loading } = useGetAllProject();
+const AllProjects = ({ projects, loading, mutate }) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [selected, setSelected] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -31,6 +28,7 @@ const AllProjects = () => {
         selected={selected}
         setSelected={setSelected}
         loading={loading}
+        mutate={mutate}
       />
       <Pagination
         currentPage={currentPage}

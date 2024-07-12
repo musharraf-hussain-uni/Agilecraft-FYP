@@ -17,6 +17,7 @@ import {
 import UserInfo from "../../components/UserInfo/UserInfo";
 import clsx from "clsx";
 import { useGetSingleProject } from "../../hooks/get-project";
+import { useGetUser } from "../../hooks/get-user";
 
 const ICONS = {
   high: <MdKeyboardDoubleArrowUp size={20} />,
@@ -27,22 +28,21 @@ const ICONS = {
 const SingleProject = () => {
   const [selected, setSelected] = useState(0);
   const { id } = useParams();
-  const { data, loading } = useGetSingleProject(id);
+  const { user } = useGetUser();
+  const { data, loading, mutate } = useGetSingleProject(id);
 
-  console.log(data);
+  // console.log(user._id);
+  // console.log(data);
+
+  const authorized = user && data?.team?.some((t) => t._id === user?._id);
+
+  // console.log(user?._id)
+  // console.log(authorized);
 
   if (loading) {
     return (
       <div className="w-full text-center">
-        <span className="loading loading-dots loading-lg"></span>
-      </div>
-    );
-  }
-
-  if (loading) {
-    return (
-      <div className="w-full text-center">
-        <span className="loading loading-dots loading-lg"></span>
+        <span className="loading loading-spinner bg-[#003175] loading-lg"></span>
       </div>
     );
   }
@@ -62,16 +62,26 @@ const SingleProject = () => {
               <CiViewTimeline size={20} />
               <span className="text-base">View Details</span>
             </a>
-            <a
-              role="tab"
-              className={`flex gap-2 tab ${
-                selected === 1 ? "tab-active" : null
-              }`}
-              onClick={() => setSelected(1)}
-            >
-              <FaEdit size={20} />
-              <span className="text-base">Activities/Timeline</span>
-            </a>
+            {authorized ? (
+              <a
+                role="tab"
+                className={`flex gap-2 tab ${
+                  selected === 1 ? "tab-active" : null
+                }`}
+                onClick={() => setSelected(1)}
+              >
+                <FaEdit size={20} />
+                <span className="text-base">Activities/Timeline</span>
+              </a>
+            ) : (
+              <a role="tab" className="flex gap-2 tab">
+                <FaEdit size={20} />
+                <span className="text-base">
+                  You are not the part of this project. Can&apos;t view
+                  conversion.
+                </span>
+              </a>
+            )}
           </div>
         </div>
         {/*Main Content*/}
@@ -197,7 +207,11 @@ const SingleProject = () => {
         {/*Update Project*/}
         {selected === 1 && (
           <div className="m-5">
-            <Activity activities={data?.activities} id={data?._id} />
+            <Activity
+              activities={data?.activities}
+              mutate={mutate}
+              id={data?._id}
+            />
           </div>
         )}
       </div>

@@ -12,7 +12,7 @@ import AuthContextProvider from "./context/AuthContext.jsx";
 import DashboardLayout from "./components/Layout/DashboardLayout.jsx";
 import ProtectedRoutes from "./routes/ProtectedRoutes.jsx";
 import { Toaster } from "react-hot-toast";
-import Projects from "./pages/Projects/Projects.jsx";
+import ProjectPage from "./pages/Projects/Projects.jsx";
 import UserContextProvider from "./context/UserContext.jsx";
 import SingleProject from "./pages/Projects/SingleProject.jsx";
 import ProjectContextProvider from "./context/ProjectContext.jsx";
@@ -20,6 +20,12 @@ import ReqContextProvider from "./context/ReqContext.jsx";
 import TestCaseContextProvider from "./context/TestCaseContext.jsx";
 import SingleTestCase from "./pages/Testing/SingleTestCase.jsx";
 import UpdateTestCase from "./pages/Testing/UpdateTestCase.jsx";
+import SingleBugTrack from "./pages/Bug-Tracking/SingleBugTrack.jsx";
+import UpdateBugTrack from "./pages/Bug-Tracking/UpdateBugTrack.jsx";
+import BugTrackContextProvider from "./context/BugTrackContext.jsx";
+import CodeReviewContextProvider from "./context/CodeReviewContext.jsx";
+import Reporting from "./pages/Reporting/Reporting.jsx";
+import { NotificationProvider } from "./context/Notification-Context.jsx";
 
 const router = createBrowserRouter([
   {
@@ -51,7 +57,7 @@ const router = createBrowserRouter([
           },
           {
             path: "/dashboard/projects",
-            element: <Projects />,
+            element: <ProjectPage />,
           },
           {
             path: "/dashboard/requirement-gathering",
@@ -71,6 +77,10 @@ const router = createBrowserRouter([
             element: <Reviews />,
           },
           {
+            path: "/dashboard/reporting",
+            element: <Reporting />,
+          },
+          {
             path: "/dashboard/projects/:id",
             element: <SingleProject />,
           },
@@ -83,8 +93,16 @@ const router = createBrowserRouter([
             element: <SingleTestCase />,
           },
           {
+            path: "/dashboard/bug-tracking/:id",
+            element: <SingleBugTrack />,
+          },
+          {
             path: "/dashboard/testing/update/:id",
             element: <UpdateTestCase />,
+          },
+          {
+            path: "/dashboard/bug-tracking/update/:id",
+            element: <UpdateBugTrack />,
           },
         ],
       },
@@ -95,16 +113,22 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <>
-      <TestCaseContextProvider>
-        <ReqContextProvider>
-          <ProjectContextProvider>
-            <UserContextProvider>
-              <Toaster />
-              <RouterProvider router={router} />
-            </UserContextProvider>
-          </ProjectContextProvider>
-        </ReqContextProvider>
-      </TestCaseContextProvider>
+      <NotificationProvider>
+        <CodeReviewContextProvider>
+          <BugTrackContextProvider>
+            <TestCaseContextProvider>
+              <ReqContextProvider>
+                <ProjectContextProvider>
+                  <UserContextProvider>
+                    <Toaster />
+                    <RouterProvider router={router} />
+                  </UserContextProvider>
+                </ProjectContextProvider>
+              </ReqContextProvider>
+            </TestCaseContextProvider>
+          </BugTrackContextProvider>
+        </CodeReviewContextProvider>
+      </NotificationProvider>
     </>
   );
 };

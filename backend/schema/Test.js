@@ -17,6 +17,9 @@ const TestSchema = Schema({
   data: {
     type: String,
   },
+  project: {
+    type: String,
+  },
   expectedResult: {
     type: String,
   },

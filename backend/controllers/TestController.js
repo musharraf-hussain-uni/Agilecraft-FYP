@@ -32,6 +32,7 @@ export const CreateTest = async (req, res) => {
       title,
       description,
       module,
+      project,
       steps,
       data,
       expectedResult,
@@ -44,6 +45,7 @@ export const CreateTest = async (req, res) => {
       description,
       module,
       steps,
+      project,
       data,
       expectedResult,
       actualResult,
@@ -70,6 +72,7 @@ export const UpdateTest = async (req, res) => {
       module,
       steps,
       data,
+      project,
       expectedResult,
       actualResult,
       updatedBy,
@@ -80,6 +83,7 @@ export const UpdateTest = async (req, res) => {
     if (module) updateFields.module = module;
     if (steps) updateFields.steps = steps;
     if (data) updateFields.data = data;
+    if (project) updateFields.project = project;
     if (expectedResult) updateFields.expectedResult = expectedResult;
     if (actualResult) updateFields.actualResult = actualResult;
     if (updatedBy) updateFields.updatedBy = updatedBy;

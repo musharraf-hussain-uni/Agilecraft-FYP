@@ -26,6 +26,10 @@ const userSchema = new Schema(
     phoneNumber: {
       type: String,
     },
+    isLoggedIn: {
+      type: Boolean,
+      default: false,
+    },
     projects: [{ type: mongoose.Types.ObjectId, ref: "Project" }],
     bugTracking: [{ type: mongoose.Types.ObjectId, ref: "BugTracking" }],
   },

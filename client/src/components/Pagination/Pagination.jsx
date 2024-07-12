@@ -2,18 +2,21 @@ import React from "react";
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   return (
-    <div className="join grid grid-cols-2 m-auto mt-10 w-1/3 border-2 border-black">
+    <div className="flex justify-center mt-4">
       <button
-        className="join-item btn btn-outline disabled:text-slate-700"
+        className={`px-4 py-2 mx-1 bg-blue-500 text-white rounded ${
+          currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
+        }`}
         onClick={() => onPageChange(currentPage - 1)}
-        disabled={currentPage === 1} // Set disabled to true if currentPage is 1
+        disabled={currentPage === 1}
       >
-        Previous page
+        Previous
       </button>
-
       <button
-        className="join-item btn btn-outline disabled:text-slate-700"
-        onClick={() => onPageChange(currentPage + 1)} // Wrap inside arrow function and use curly braces
+        className={`px-4 py-2 mx-1 bg-blue-500 text-white rounded ${
+          currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""
+        }`}
+        onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
         Next

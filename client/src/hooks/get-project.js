@@ -9,29 +9,33 @@ export const useGetAllProject = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        setLoading(true);
-        const { data } = await axios.get("/project/", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-          },
-        });
-        // console.log("All Projects Fetched", data);
-        setProjects(data);
-      } catch (error) {
-        // console.error("Error fetching projects:", error);
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchProjects = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get("/project/", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      });
+      // console.log("All Projects Fetched", data);
+      setProjects(data);
+    } catch (error) {
+      // console.error("Error fetching projects:", error);
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchProjects();
   }, []);
 
-  return { projects, error, loading };
+  const mutate = () => {
+    fetchProjects();
+  };
+
+  return { projects, error, loading, mutate };
 };
 
 export const useGetSingleProject = (id) => {
@@ -39,24 +43,28 @@ export const useGetSingleProject = (id) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchProject = async () => {
-      setLoading(true);
-      try {
-        const { data } = await axios.get(`/project/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        setData(data);
-      } catch (error) {
-        console.error("Error fetching project:", error);
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchProject = async () => {
+    setLoading(true);
+    try {
+      const { data } = await axios.get(`/project/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setData(data);
+    } catch (error) {
+      console.error("Error fetching project:", error);
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchProject();
   }, [id]);
 
-  return { data, error, loading };
+  const mutate = () => {
+    fetchProject();
+  };
+
+  return { data, error, loading, mutate };
 };

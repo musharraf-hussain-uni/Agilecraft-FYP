@@ -18,6 +18,8 @@ const Sidebar = ({ setOpen, isOpen }) => {
   const { user } = useGetUser();
   const [userImg, setUserImg] = useState("");
 
+  // console.log(user?.img)
+
   let role = user?.role;
 
   useEffect(() => {
@@ -27,7 +29,7 @@ const Sidebar = ({ setOpen, isOpen }) => {
   }, [user]);
 
   return (
-    <div className="sidebar">
+    <div className="sidebar bg-[#003175]">
       <div className={`sidebar-wrapper`}>
         <div
           className="absolute top-0 right-0 flex justify-end text-white cursor-pointer"

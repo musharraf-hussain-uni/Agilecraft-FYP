@@ -21,11 +21,11 @@
   gap: 20px;
 }
 
-.sidebar-list-items.active,
+/* .sidebar-list-items.active,
 .sidebar-list-items:hover {
-  background-color: var(--textSoft);
+  background-color: "#e2e8f0";
   border-radius: 8px 0 0 8px;
-}
+} */
 
 .sidebar-icons {
   margin-right: 5px;

@@ -26,8 +26,8 @@ export const GetAllBugTracks = () => {
     fetchBugTracks();
   }, [fetchBugTracks]);
 
-  const mutate = {
-    fetchBugTracks,
+  const mutate = () => {
+    fetchBugTracks();
   };
 
   return { data, loading, error, mutate };
@@ -55,8 +55,8 @@ export const GetBugTrack = (id) => {
     fetchBugTrack();
   }, [fetchBugTrack]);
 
-  const mutate = {
-    fetchBugTrack,
+  const mutate = () => {
+    fetchBugTrack();
   };
 
   return { data, loading, error, mutate };

@@ -12,7 +12,7 @@ const DashboardLayout = () => {
   if (loading) {
     return (
       <div className="w-full h-screen flex justify-center items-center">
-        <span className="loading loading-spinner loading-lg"></span>
+        <span className="loading loading-spinner loading-lg bg-[#003175]"></span>
       </div>
     );
   }
@@ -35,8 +35,8 @@ const DashboardLayout = () => {
           className="ml-2 transition-all mt-5 cursor-pointer xl:mt-2 lg:mt-4 fixed z-50"
         >
           {!isOpen && (
-            <div className="bg-white p-2 ring-black ring-2 rounded-lg mt-2">
-              <GiHamburgerMenu size={40} />
+            <div className="bg-white p-2 ring-[#003175] ring-2 rounded-lg mt-2">
+              <GiHamburgerMenu size={40} className="text-[#003175]" />
             </div>
           )}
         </div>
@@ -45,7 +45,7 @@ const DashboardLayout = () => {
         <div
           className={`${
             isOpen ? "translate-x-0" : "-translate-x-full"
-          } fixed inset-y-0 left-0 w-70 bg-[#020205] shadow z-20 transition-transform`}
+          } fixed inset-y-0 left-0 w-70 bg-[#003175] shadow z-20 transition-transform`}
         >
           <Sidebar setOpen={setOpen} isOpen={open} />
         </div>

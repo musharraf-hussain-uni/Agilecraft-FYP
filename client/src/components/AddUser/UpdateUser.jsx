@@ -5,7 +5,7 @@ import { FaProjectDiagram } from "react-icons/fa";
 import { useGetUserById } from "../../hooks/get-user";
 import { UserContext } from "../../context/UserContext";
 
-const UpdateUser = ({ isOpen, setIsOpen, id }) => {
+const UpdateUser = ({ isOpen, setIsOpen, id, mutate }) => {
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
   const [email, setEmail] = useState("");
@@ -36,6 +36,7 @@ const UpdateUser = ({ isOpen, setIsOpen, id }) => {
     UpdateUser(id, formData);
 
     setIsOpen(false);
+    mutate();
   };
 
   return (
@@ -53,7 +54,7 @@ const UpdateUser = ({ isOpen, setIsOpen, id }) => {
             animate={{ scale: 1, rotate: "0deg" }}
             exit={{ scale: 0, rotate: "0deg" }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-gradient-to-br from-slate-700 to-gray-600 text-white p-6 rounded-lg w-full max-w-lg lg:max-w-xl shadow-xl cursor-default relative overflow-hidden"
+            className="bg-gradient-to-br from-blue-400 to-slate-700 text-white p-6 rounded-lg w-full max-w-lg lg:max-w-xl shadow-xl cursor-default relative overflow-hidden"
           >
             <FiAlertCircle className="text-white/10 rotate-12 text-[250px] absolute z-0 -top-24 -left-24" />
             <div className="relative z-10">

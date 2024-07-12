@@ -35,13 +35,14 @@ export const GetAllBug = async (req, res) => {
 
 export const CreateBug = async (req, res) => {
   try {
-    const id = req.user;
+    // const id = req.user;
     const {
       title,
       description,
       severity,
       priority,
       status,
+      project,
       reportedBy,
       assignedTo,
     } = req.body;
@@ -56,6 +57,7 @@ export const CreateBug = async (req, res) => {
       description,
       severity,
       priority,
+      project,
       media: media && assetPaths,
       assignedTo: teams,
       status,
@@ -79,11 +81,6 @@ export const CreateBug = async (req, res) => {
       message: "Bug has been created successfully",
       bug: populateBugTracking,
     });
-
-    res.status(201).json({
-      message: "BUg has been created successfully",
-      bug: populateBugTracking, // Send populated bug data
-    });
   } catch (error) {
     console.log(error);
     res.status(501).json({ message: "Internal Server Error", error });
@@ -99,13 +96,18 @@ export const UpdateBug = async (req, res) => {
 
     const assetPaths = media?.map((file) => file.path);
 
+    console.log(title, description, severity, priority, status, assignedTo);
+
+    console.log(media);
+
     const updateFields = {};
 
     if (title) updateFields.title = title;
     if (description) updateFields.description = description;
+    if (project) updateFields.project = project;
     if (severity) updateFields.severity = severity;
     if (status) updateFields.status = status;
-    if (priority) updateFields.priority = lowerCasePriority;
+    if (priority) updateFields.priority = priority;
     if (assignedTo)
       updateFields.assignedTo = Array.isArray(assignedTo)
         ? assignedTo

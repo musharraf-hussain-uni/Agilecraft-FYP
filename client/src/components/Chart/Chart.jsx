@@ -9,6 +9,7 @@ import {
   YAxis,
 } from "recharts";
 import { useGetUserTask } from "../../hooks/get-user";
+import { useEffect, useState } from "react";
 
 const countPriorities = (data) => {
   const priorityCounts = {
@@ -19,7 +20,7 @@ const countPriorities = (data) => {
   };
 
   data.forEach((project) => {
-    priorityCounts[project.priority]++; // Increment count based on priority
+    priorityCounts[project.priority]++;
   });
 
   return [
@@ -30,18 +31,16 @@ const countPriorities = (data) => {
   ];
 };
 
-export const Charts = () => {
-  const { userTask, loading, error } = useGetUserTask();
-
+export const Charts = ({ tasks, loading }) => {
   if (loading)
     return (
       <div className="w-full text-center">
-        <span className="loading loading-dots loading-lg"></span>
+        <span className="loading loading-spinner bg-[#003175] loading-lg"></span>
       </div>
     );
-  if (error) return <p>Error fetching data: {error.message}</p>;
+  // if (error) return <p>Error fetching data: {error.message}</p>;
 
-  if (!userTask || userTask.length === 0) {
+  if (!tasks || tasks.length === 0) {
     return (
       <div className="w-full text-center">
         <p className="text-base">No project data available.</p>
@@ -49,7 +48,7 @@ export const Charts = () => {
     );
   }
 
-  const dynamicChartData = countPriorities(userTask);
+  const dynamicChartData = countPriorities(tasks);
 
   return (
     <ResponsiveContainer width={"100%"} height={300}>
@@ -59,7 +58,7 @@ export const Charts = () => {
         <Tooltip />
         <Legend />
         <CartesianGrid strokeDasharray="3 3" />
-        <Bar dataKey="total" fill="#000" />
+        <Bar dataKey="total" fill="#003175" />
       </BarChart>
     </ResponsiveContainer>
   );

@@ -3,20 +3,11 @@ import { IoMdAdd } from "react-icons/io";
 import { TaskType } from "../../data/data";
 import AllProjects from "./AllProjects";
 import CreateProject from "../../components/Projects/CreateProject";
+import { useGetAllProject } from "../../hooks/get-project";
 
-const UserPage = () => {
+const ProjectPage = () => {
   const [isOpen, setIsOpen] = useState(false);
-  //   const { users, loading, error, setUsers } = useGetAllUser();
-
-  //   console.log(users);
-
-  //   if (loading) {
-  //     return <div>Loading...</div>;
-  //   }
-
-  //   if (error) {
-  //     return <div>Error...</div>;
-  //   }
+  const { projects, loading, mutate } = useGetAllProject();
 
   return (
     <div className="mb-8 px-4 md:px-20 lg:px-20 xl:px-24 xxl:px-48 md:mt-0">
@@ -25,12 +16,16 @@ const UserPage = () => {
           <div className=" bg-slate-900 grid place-content-center">
             <button
               onClick={() => setIsOpen(true)}
-              className="flex gap-4 rounded-md items-center bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-medium px-4 py-2 hover:opacity-90 transition-opacity"
+              className="flex gap-4 rounded-md items-center bg-gradient-to-r from-blue-600 to-gray-600 text-white font-medium px-4 py-2 hover:opacity-90 transition-opacity"
             >
               <IoMdAdd size={20} /> Create Project
             </button>
           </div>
-          <CreateProject isOpen={isOpen} setIsOpen={setIsOpen} />
+          <CreateProject
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            mutate={mutate}
+          />
         </div>
       </div>
 
@@ -52,10 +47,10 @@ const UserPage = () => {
       {/* All Task Fields*/}
 
       <div className="my-10">
-        <AllProjects />
+        <AllProjects projects={projects} loading={loading} mutate={mutate} />
       </div>
     </div>
   );
 };
 
-export default UserPage;
+export default ProjectPage;

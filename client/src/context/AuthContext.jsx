@@ -8,6 +8,7 @@ export const AuthContext = createContext(null);
 export default function AuthContextProvider() {
   const [isLogged, setIsLogged] = useState(false);
   const navigate = useNavigate();
+  const [currentUser, setCurrentUser] = useState(null);
   const token = localStorage.getItem("access_token");
 
   useEffect(() => {
@@ -24,8 +25,11 @@ export default function AuthContextProvider() {
         { email, password },
         { headers: { "Content-Type": "application/json" } }
       );
+      console.log(data);
+      setCurrentUser(data.user);
       localStorage.setItem("access_token", data.token);
       setIsLogged(true);
+      window.location.reload();
       navigate("/dashboard");
       toast.success(`User logged in succesfully`);
     } catch (error) {
@@ -42,14 +46,19 @@ export default function AuthContextProvider() {
       toast.success("User Created successfully");
       navigate("/dashboard/user");
     } catch (error) {
-      console.log("Error during registration:", error);
-      toast.error("Something Went Wrong. Try again");
+      console.log("Error during registration:", error.message);
     }
   };
   const logout = async () => {
     try {
       const { data } = await axios.post(
-        "http://localhost:3001/api/auth/logout"
+        "http://localhost:3001/api/auth/logout",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
       localStorage.removeItem("access_token");
       setIsLogged(false);
@@ -61,6 +70,7 @@ export default function AuthContextProvider() {
   };
 
   const value = {
+    currentUser,
     isLogged,
     login,
     register,

@@ -6,7 +6,7 @@ import { useGetUser } from "../../hooks/get-user";
 import { ReqContext } from "../../context/ReqContext";
 import { useGetAllProject } from "../../hooks/get-project";
 
-const UpdateRequirement = ({ isOpen, setIsOpen, id }) => {
+const UpdateRequirement = ({ isOpen, setIsOpen, id, mutate }) => {
   const { requirements } = useGetAllRequirement();
   const { user } = useGetUser();
   const { projects } = useGetAllProject();
@@ -53,6 +53,7 @@ const UpdateRequirement = ({ isOpen, setIsOpen, id }) => {
         priority: "",
         module: "",
       });
+      mutate();
     } catch (error) {
       console.log(error);
     }
@@ -72,7 +73,7 @@ const UpdateRequirement = ({ isOpen, setIsOpen, id }) => {
             animate={{ scale: 1, rotate: "0deg" }}
             exit={{ scale: 0, rotate: "0deg" }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-gradient-to-br from-violet-600 to-indigo-600 text-white p-6 rounded-lg w-full max-w-lg lg:max-w-xl shadow-xl cursor-default relative overflow-hidden"
+            className="bg-gradient-to-br from-blue-400 to-slate-700 text-white p-6 rounded-lg w-full max-w-lg lg:max-w-xl shadow-xl cursor-default relative overflow-hidden"
           >
             <FaUserEdit className="text-white/10 rotate-12 text-[250px] absolute z-0 -top-24 -left-24" />
             <div className="relative z-10">
@@ -94,7 +95,7 @@ const UpdateRequirement = ({ isOpen, setIsOpen, id }) => {
                   />
                   <span
                     className="absolute left-2 top-0 -translate-y-1/2
-          scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+          scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
           peer-focus:scale-0
           "
                   >
@@ -115,7 +116,7 @@ const UpdateRequirement = ({ isOpen, setIsOpen, id }) => {
                   />
                   <span
                     className="absolute left-2 top-0 -translate-y-1/2
-                scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+                scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
                 peer-focus:scale-0
                 "
                   >
@@ -144,7 +145,7 @@ const UpdateRequirement = ({ isOpen, setIsOpen, id }) => {
                   </select>
                   <span
                     className="absolute left-2 top-0 -translate-y-1/2
-                scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+                scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
                 peer-focus:scale-0
                 "
                   >
@@ -164,7 +165,7 @@ const UpdateRequirement = ({ isOpen, setIsOpen, id }) => {
                   />
                   <span
                     className="absolute left-2 top-0 -translate-y-1/2
-                scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+                scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
                 peer-focus:scale-0
                 "
                   >
@@ -182,7 +183,7 @@ const UpdateRequirement = ({ isOpen, setIsOpen, id }) => {
                     />
                     <span
                       className="absolute left-2 top-0 -translate-y-1/2
-                scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+                scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
                 peer-focus:scale-0
                 "
                     >
@@ -208,7 +209,7 @@ const UpdateRequirement = ({ isOpen, setIsOpen, id }) => {
                     </select>
                     <span
                       className="absolute left-2 top-0 -translate-y-1/2
-                scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+                scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
                 peer-focus:scale-0
                 "
                     >

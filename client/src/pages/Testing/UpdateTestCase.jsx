@@ -83,7 +83,7 @@ export default function UpdateTestCase() {
         className="mx-24 my-12
       "
       >
-        <motion.div className="bg-gradient-to-br from-violet-600 to-indigo-600 text-white p-6 rounded-lg w-full px-24">
+        <motion.div className="bg-gradient-to-br from-blue-400 to-slate-700 text-white p-6 rounded-lg w-full px-24">
           <FiAlertCircle className="text-white/10 rotate-12 text-[250px] absolute z-0 -top-24 -left-24" />
           <div className="relative z-10">
             <div className="bg-white w-12 h-12 mb-2 rounded-full text-3xl text-indigo-600 grid place-items-center mx-auto">
@@ -104,7 +104,7 @@ export default function UpdateTestCase() {
                 />
                 <span
                   className="absolute left-2 top-0 -translate-y-1/2
-scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
 peer-focus:scale-0
 "
                 >
@@ -124,7 +124,7 @@ peer-focus:scale-0
                 />
                 <span
                   className="absolute left-2 top-0 -translate-y-1/2
-    scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+    scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
     peer-focus:scale-0
     "
                 >
@@ -143,7 +143,7 @@ peer-focus:scale-0
                 />
                 <span
                   className="absolute left-2 top-0 -translate-y-1/2
-    scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+    scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
     peer-focus:scale-0
     "
                 >
@@ -164,7 +164,7 @@ peer-focus:scale-0
 
                 <span
                   className="absolute left-2 top-0 -translate-y-1/2
-    scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+    scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
     peer-focus:scale-0
     "
                 >
@@ -185,7 +185,7 @@ peer-focus:scale-0
 
                   <span
                     className="absolute left-2 top-0 -translate-y-1/2
-  scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+  scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
   peer-focus:scale-0
   "
                   >
@@ -208,7 +208,7 @@ peer-focus:scale-0
 
                   <span
                     className="absolute left-2 top-0 -translate-y-1/2
-  scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+  scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
   peer-focus:scale-0
   "
                   >
@@ -231,7 +231,7 @@ peer-focus:scale-0
 
                   <span
                     className="absolute left-2 top-0 -translate-y-1/2
-  scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+  scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
   peer-focus:scale-0
   "
                   >

@@ -35,36 +35,37 @@ export const useGetUser = () => {
 };
 
 export const useGetAllUser = () => {
-  const [allUsers, setAllUsers] = useState(null);
+  const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const fetchAllUser = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get("/users/find/all", {
+      const response = await axios.get("/users/find/all", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-
-      // console.log("fetchAllUser", data);
-
-      setAllUsers(data);
-      setLoading(false);
+      setData(response.data); // Assuming data is within the response object
     } catch (error) {
       setError(error);
-      setLoading(false);
+    } finally {
+      setLoading(false); // Set loading to false after all operations are complete
     }
   };
 
-  // http://localhost:3001/api/users/all
+  // http://localhost:3001/api/users/all (commented out for brevity)
 
   useEffect(() => {
     fetchAllUser();
   }, []);
 
-  return { allUsers, error, loading, setAllUsers };
+  const mutate = () => {
+    fetchAllUser();
+  };
+
+  return { data, error, loading, mutate };
 };
 
 export const useGetAllUserDash = () => {
@@ -122,7 +123,11 @@ export const useGetUserTask = () => {
     fetchUserTask();
   }, []);
 
-  return { userTask, error, loading, setUserTask };
+  const mutate = () => {
+    fetchUserTask();
+  };
+
+  return { userTask, error, loading, setUserTask, mutate };
 };
 
 export const useGetUserById = (id) => {
@@ -141,6 +146,7 @@ export const useGetUserById = (id) => {
         });
         setSingleUser(data);
         setLoading(false);
+        console.log(data);
       } catch (error) {
         console.log(error);
         setError(error);
@@ -153,3 +159,42 @@ export const useGetUserById = (id) => {
 
   return { singleUser, error, loading };
 };
+
+export const GetUserNotification = () => {
+  const [notifications, setNotification] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const fetchAllNotifications = async () => {
+    setLoading(true);
+    try {
+      const { data } = await axios.get("/notification/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      // console.log("fetchAllNotifications", data);
+
+      setNotification(data);
+      setLoading(false);
+    } catch (error) {
+      setError(error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchAllNotifications();
+  }, []);
+
+  const mutate = () => {
+    fetchAllNotifications();
+  };
+
+  return { notifications, error, loading, mutate };
+};
+
+// export const MarkNotificationAsRead = (id) => {
+// const
+// }

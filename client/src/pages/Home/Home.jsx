@@ -10,9 +10,7 @@ const Home = () => {
       <div>
         <Main />
       </div>
-      <div>
-        <Intro />
-      </div>
+      <div>{/*<Intro />*/}</div>
     </>
   );
 };

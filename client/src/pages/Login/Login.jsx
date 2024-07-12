@@ -13,9 +13,13 @@ const Login = () => {
   const { login } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    login(email, password);
+    try {
+      e.preventDefault();
+      login(email, password);
+      
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

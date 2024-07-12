@@ -1,7 +1,4 @@
-import {
-  useEffect,
-  useState
-} from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 
 axios.defaults.baseURL = "http://localhost:3001/api";
@@ -12,30 +9,36 @@ export const useGetAllRequirement = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchRequirement = async () => {
-      setLoading(true);
-      try {
-        const {
-          data
-        } = await axios.get("/req-gathering/", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setRequirements(data);
-      } catch (error) {
-        console.log(error);
-        setError(error);
-      }
-    };
-    fetchRequirement();
+  const fetchRequirement = useCallback(async () => {
+    setLoading(true);
+    try {
+      setLoading(false);
+
+      const { data } = await axios.get("/req-gathering/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setRequirements(data);
+    } catch (error) {
+      console.log(error);
+      setError(error);
+      setLoading(false);
+    }
   }, []);
 
+  useEffect(() => {
+    fetchRequirement();
+  }, [fetchRequirement]);
+
+  const mutate = () => {
+    fetchRequirement();
+  };
   return {
     requirements,
     error,
-    loading
+    loading,
+    mutate,
   };
 };
 
@@ -44,29 +47,32 @@ export const useGetRequirement = (id) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const FetchSingleRequirement = useCallback(async () => {
+    setLoading(true);
+    try {
+      const { data } = await axios.get(`/req-gathering/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setRequirement(data);
+    } catch (error) {
+      console.log(error);
+      setError(error);
+    }
+  }, []);
+
   useEffect(() => {
-    const FetchSingleRequirement = async () => {
-      setLoading(true);
-      try {
-        const {
-          data
-        } = await axios.get(`/req-gathering/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setRequirement(data);
-      } catch (error) {
-        console.log(error);
-        setError(error);
-      }
-    };
     FetchSingleRequirement();
   }, [id]);
+
+  const mutate = () => {
+    FetchSingleRequirement();
+  };
 
   return {
     requirement,
     error,
-    loading
+    loading,
   };
 };

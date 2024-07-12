@@ -9,6 +9,8 @@ import RequirementRoutes from "./Routes/reqGatheringRoutes.js";
 import ProjectRoutes from "./Routes/projectRoutes.js";
 import TestRouter from "./Routes/testRoutes.js";
 import BugRouter from "./Routes/bugTrackingRoutes.js";
+import CodeReviewRouter from "./Routes/codeReviewRoute.js";
+import NotificationRouter from "./Routes/notifcationRoutes.js";
 
 dotenv.config();
 
@@ -34,6 +36,8 @@ app.use("/api/req-gathering", RequirementRoutes);
 app.use("/api/project", ProjectRoutes);
 app.use("/api/test", TestRouter);
 app.use("/api/bug-tracking", BugRouter);
+app.use("/api/code-reviews", CodeReviewRouter);
+app.use("/api/notification", NotificationRouter);
 
 // Server
 const PORT = 3001 || process.env.PORT;

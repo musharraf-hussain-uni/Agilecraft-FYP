@@ -3,9 +3,9 @@ import { AuthContext } from "../../context/AuthContext";
 import avatarImg from "../../assets/avatar.png";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiAlertCircle } from "react-icons/fi";
-import { FaProjectDiagram } from "react-icons/fa";
+import toast from "react-hot-toast";
 
-const AddUser = ({ isOpen, setIsOpen }) => {
+const AddUser = ({ isOpen, setIsOpen, mutate }) => {
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
   const [email, setEmail] = useState("");
@@ -17,43 +17,60 @@ const AddUser = ({ isOpen, setIsOpen }) => {
 
   const { register } = useContext(AuthContext);
 
-  const handleSubmit = () => {
-    if (
-      !email.trim() ||
-      !fName.trim() ||
-      !lName.trim() ||
-      !password.trim() ||
-      !phoneNumber.trim() ||
-      !options
-    ) {
-      throw new Error("Please fill out all the required fields");
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneRegex = /^[0-9]{11}$/;
+
+  const handleSubmit = async () => {
+    try {
+      // Check for empty fields first
+      if (
+        !email.trim() ||
+        !fName.trim() ||
+        !lName.trim() ||
+        !password.trim() ||
+        !phoneNumber.trim() ||
+        !options ||
+        !img
+      ) {
+        toast.error("Please fill out all the required fields");
+        return; // Exit early if required fields are empty
+      }
+
+      // Validate email in a separate check
+      if (!emailRegex.test(email)) {
+        toast.error("Please enter a valid email address");
+        return; // Exit early for invalid email
+      }
+
+      // Validate password length in a separate check
+      if (password.length < 4) {
+        toast.error("Please enter a valid password with at least 8 characters");
+        return; // Exit early for short password
+      }
+
+      // Validate phone number (if applicable)
+      if (phoneRegex && !phoneRegex.test(phoneNumber)) {
+        toast.error("Please enter a valid 11-digit phone number");
+        return; // Exit early for invalid phone number
+      }
+
+      // All validations passed, proceed with form submission
+      const formData = new FormData();
+      formData.append("fName", fName);
+      formData.append("lName", lName);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("phoneNumber", phoneNumber);
+      formData.append("options", options);
+      formData.append("img", img);
+
+      await register(formData);
+      setIsOpen(false);
+      mutate();
+    } catch (error) {
+      setIsOpen(true);
+      console.error("Error during form submission:", error); // Log the error for debugging
     }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      throw new Error("Please enter a valid email address");
-    }
-
-    if (password.length < 4) {
-      throw new Error("Please enter a valid password with 8 digits");
-    }
-    const phoneRegex = /^[0-9]{11}$/;
-    if (!phoneRegex.test(phoneNumber)) {
-      throw new Error("Please enter a valid 11-digit phone number");
-    }
-    const formData = new FormData();
-
-    formData.append("fName", fName);
-    formData.append("lName", lName);
-    formData.append("email", email);
-    formData.append("password", password);
-    formData.append("phoneNumber", phoneNumber);
-    formData.append("options", options);
-    formData.append("img", img);
-
-    register(formData);
-
-    setIsOpen(false);
   };
 
   const handleFileChange = (e) => {
@@ -80,13 +97,10 @@ const AddUser = ({ isOpen, setIsOpen }) => {
             animate={{ scale: 1, rotate: "0deg" }}
             exit={{ scale: 0, rotate: "0deg" }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-gradient-to-br from-slate-700 to-gray-600 text-white p-6 rounded-lg w-full max-w-lg lg:max-w-xl shadow-xl cursor-default relative overflow-hidden"
+            className="bg-gradient-to-br from-blue-400 to-slate-700 text-white p-6 rounded-lg w-full max-w-lg lg:max-w-xl shadow-xl cursor-default relative overflow-hidden"
           >
             <FiAlertCircle className="text-white/10 rotate-12 text-[250px] absolute z-0 -top-24 -left-24" />
             <div className="relative z-10">
-              <div className="bg-white w-16 h-16 mb-2 rounded-full text-3xl text-indigo-600 grid place-items-center mx-auto">
-                <FaProjectDiagram />
-              </div>
               <h3 className="text-3xl font-bold text-center mb-2 text-slate-300">
                 Add User
               </h3>
@@ -102,7 +116,7 @@ const AddUser = ({ isOpen, setIsOpen }) => {
                   />
                   <span
                     className="absolute left-2 top-0 -translate-y-1/2
-          scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+          scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
           peer-focus:scale-0
           "
                   >
@@ -120,7 +134,7 @@ const AddUser = ({ isOpen, setIsOpen }) => {
                   />
                   <span
                     className="absolute left-2 top-0 -translate-y-1/2
-                scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+                scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
                 peer-focus:scale-0
                 "
                   >
@@ -139,7 +153,7 @@ const AddUser = ({ isOpen, setIsOpen }) => {
                     />
                     <span
                       className="absolute left-2 top-0 -translate-y-1/2
-                scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+                scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
                 peer-focus:scale-0
                 
                 "
@@ -157,7 +171,7 @@ const AddUser = ({ isOpen, setIsOpen }) => {
                     />
                     <span
                       className="absolute left-2 top-0 -translate-y-1/2
-                scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+                scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
                 peer-focus:scale-0
                 
                 "
@@ -177,7 +191,7 @@ const AddUser = ({ isOpen, setIsOpen }) => {
                     />
                     <span
                       className="absolute left-2 top-0 -translate-y-1/2
-                scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+                scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
                 peer-focus:scale-0
                 
                 "
@@ -199,7 +213,7 @@ const AddUser = ({ isOpen, setIsOpen }) => {
                     </select>
                     <span
                       className="absolute left-2 top-0 -translate-y-1/2
-                scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+                scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
                 peer-focus:scale-0
                 
                 "
@@ -221,6 +235,7 @@ const AddUser = ({ isOpen, setIsOpen }) => {
                     type="file"
                     className="file-input file-input-bordered file-input-xs w-full max-w-xs md:file-input-sm"
                     onChange={handleFileChange}
+                    required
                   />
                 </div>
               </div>
@@ -233,7 +248,7 @@ const AddUser = ({ isOpen, setIsOpen }) => {
                 </button>
                 <button
                   onClick={handleSubmit}
-                  className="bg-white hover:opacity-90 transition-opacity text-indigo-600 font-semibold w-full py-2 rounded"
+                  className="bg-white hover:opacity-90 transition-opacity text-blue-600 font-semibold w-full py-2 rounded"
                 >
                   Add User
                 </button>

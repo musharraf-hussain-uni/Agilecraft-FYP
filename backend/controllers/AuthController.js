@@ -7,9 +7,11 @@ const saltRounds = 10;
 export const register = async (req, res) => {
   try {
     const { fName, lName, email, password, phoneNumber, options } = req.body;
+
     const img = req.file;
     const url = img.path;
-    const conditionForImage = img !== "undefined" ? url : "";
+
+    const conditionForImage = img ? url : "";
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
@@ -22,6 +24,7 @@ export const register = async (req, res) => {
       phoneNumber,
       role: options,
       img: conditionForImage,
+      isLoggedIn,
     });
 
     // Generate token
@@ -34,9 +37,7 @@ export const register = async (req, res) => {
     }); // Send both user and token as properties of a single object
   } catch (error) {
     console.log(error);
-    res.status(500).json({
-      error: "Internal Server Error",
-    });
+    res.status(500).json("Internal Server Error");
   }
 };
 
@@ -49,36 +50,52 @@ export const login = async (req, res) => {
     });
 
     if (!user) {
-      res.status(502).json({
+      return res.status(502).json({
         message: "No User Found",
       });
     }
 
-    if (user) {
-      const verifyPass = await bcrypt.compare(password, user.password);
-      if (verifyPass) {
-        const token = generateToken(res, user._id, user.role);
-        res.status(200).json({
-          message: "User logged in successfully",
-          user,
-          token,
-        });
-      } else {
-        res.status(401).json({
-          message: "Invalid Password",
-        });
-      }
+    const verifyPass = await bcrypt.compare(password, user.password);
+    if (!verifyPass) {
+      return res.status(401).json({
+        message: "Invalid Password",
+      });
     }
+
+    // Update isLoggedIn field
+    user.isLoggedIn = true;
+    await user.save(); // Save the updated user object
+
+    const token = generateToken(res, user._id, user.role);
+    res.status(200).json({
+      message: "User logged in successfully",
+      user,
+      token,
+    });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.status(500).json({
       error: "Internal Server Error",
     });
   }
 };
 
-export const logout = (req, res) => {
+export const logout = async (req, res) => {
   try {
+    const id = req.user;
+
+    console.log(id)
+
+    const user = await User.findById(id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Update isLoggedIn field
+    user.isLoggedIn = false;
+    await user.save(); // Save the updated user object
+
     // Clear the access_token cookie
     res.clearCookie("access_token", {
       httpOnly: true, // Prevent client-side JavaScript access

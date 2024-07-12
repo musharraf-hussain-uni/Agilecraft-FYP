@@ -6,14 +6,12 @@ import "./featuredinfo.css";
 import { useGetUserTask } from "../../hooks/get-user";
 import { useEffect, useState } from "react";
 
-const FeaturedInfo = () => {
+const FeaturedInfo = ({ tasks, loading }) => {
   const [stats, setStats] = useState([]); // Initialize stats as an empty array
-  const { userTask, loading } = useGetUserTask();
-  console.log(userTask);
 
   // Calculate task counts only after userTask is available
   useEffect(() => {
-    if (userTask) {
+    if (tasks) {
       const taskCounts = {
         completed: 0,
         todo: 0,
@@ -22,7 +20,7 @@ const FeaturedInfo = () => {
         normal: 0,
       };
 
-      userTask.forEach((task) => {
+      tasks.forEach((task) => {
         taskCounts.completed += task.stage === "completed" ? 1 : 0;
         taskCounts.todo += task.stage === "todo" ? 1 : 0;
         taskCounts.inProgress += task.stage === "in progress" ? 1 : 0; // Assuming a space in "in progress"
@@ -34,7 +32,7 @@ const FeaturedInfo = () => {
         {
           _id: "1",
           label: "TOTAL TASK",
-          total: userTask.length,
+          total: tasks.length,
           icon: <FaNewspaper />,
           bg: "bg-[#1d4ed8]",
         },
@@ -63,18 +61,24 @@ const FeaturedInfo = () => {
 
       setStats(updatedStats);
     }
-  }, [userTask]);
+  }, [tasks]);
   return (
     <div className="featured">
       {loading ? (
-        <span className="loading loading-dots loading-lg"></span>
+        <span className="loading loading-spinner loading-lg bg-[#003175]"></span>
       ) : (
         stats.map((card, index) => (
-          <div className="featured-items" key={index}>
-            <span className={`featured-title lg:text-2xl`}>{card.label}</span>
+          <div className="featured-items bg-white shadow-2xl" key={index}>
+            <span className={`featured-title lg:text-2xl text-[#003175] `}>
+              {card.label}
+            </span>
             <div className="featured-money-container">
-              <span className={`featured-money lg:text-sm`}>{card.total}</span>
-              <span className="featured-moneyRate">{card.icon}</span>
+              <span className={`featured-money lg:text-sm text-[#003175]`}>
+                {card.total}
+              </span>
+              <span className="featured-moneyRate bg-[#003175]">
+                {card.icon}
+              </span>
             </div>
           </div>
         ))

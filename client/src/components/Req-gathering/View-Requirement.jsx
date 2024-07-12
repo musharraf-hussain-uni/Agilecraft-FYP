@@ -33,7 +33,7 @@ const ViewRequirement = ({ isOpen, setIsOpen, id }) => {
             animate={{ scale: 1, rotate: "0deg" }}
             exit={{ scale: 0, rotate: "0deg" }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-gradient-to-br from-violet-600 to-indigo-600 text-white p-6 rounded-lg w-full max-w-2xl lg:max-w-full shadow-xl cursor-default relative overflow-hidden"
+            className="bg-gradient-to-br from-blue-500 to-slate-700 text-white p-6 rounded-lg w-full max-w-2xl lg:max-w-full shadow-xl cursor-default relative overflow-hidden"
           >
             <FiAlertCircle className="text-white/10 rotate-12 text-[250px] absolute z-0 -top-24 -left-24" />
             <div className="relative z-10">

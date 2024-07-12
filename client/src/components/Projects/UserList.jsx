@@ -1,15 +1,17 @@
 import { Listbox, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useState } from "react";
 import { BsChevronExpand } from "react-icons/bs";
-import { summary } from "../../assets/data";
+// import { summary } from "../../assets/data";
 import clsx from "clsx";
 import { getInitials } from "../../utils";
 import { MdCheck } from "react-icons/md";
 import { useGetAllUser } from "../../hooks/get-user";
 
 const UserList = ({ setTeam, team }) => {
-  const { allUsers } = useGetAllUser();
+  const { data } = useGetAllUser();
   const [selectedUsers, setSelectedUsers] = useState([]);
+
+  console.log(data);
 
   const handleChange = (el) => {
     setSelectedUsers(el);
@@ -25,7 +27,7 @@ const UserList = ({ setTeam, team }) => {
 
   return (
     <div>
-      <p className="text-indigo-900 font-bold border px-2 py-1 mb-1 max-w-fit bg-slate-100 rounded-full">
+      <p className="text-indigo-900 font-bold border px-2 py-1 mb-1 max-w-fit bg-slate-100 rounded-full mt-2">
         Assign Task To:{" "}
       </p>
       <Listbox
@@ -33,7 +35,7 @@ const UserList = ({ setTeam, team }) => {
         onChange={(el) => handleChange(el)}
         multiple
       >
-        <div className="relative mt-1">
+        <div className="relative my-2">
           <Listbox.Button className="relative w-full cursor-default rounded bg-white pl-3 pr-10 text-left px-3 py-2.5 2xl:py-3 border border-gray-300 sm:text-sm">
             <span className="block truncate text-black">
               {selectedUsers?.map((user) => user.fName).join(", ")}
@@ -54,7 +56,7 @@ const UserList = ({ setTeam, team }) => {
             leaveTo="opacity-0"
           >
             <Listbox.Options className="z-50 absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
-              {allUsers?.map((user, index) => (
+              {data?.map((user, index) => (
                 <Listbox.Option
                   key={index}
                   className={({ active }) =>

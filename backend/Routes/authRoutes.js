@@ -1,6 +1,7 @@
 import express from "express";
 import { login, logout, register } from "../controllers/AuthController.js";
 import multer from "multer";
+import { verifyToken } from "../config/token.js";
 
 // Multer configuration
 const storage = multer.diskStorage({
@@ -18,6 +19,6 @@ const AuthRouter = express.Router();
 AuthRouter.post("/login", login);
 
 AuthRouter.post("/register", upload.single("img"), register);
-AuthRouter.post("/logout", logout);
+AuthRouter.post("/logout", verifyToken, logout);
 
 export default AuthRouter;

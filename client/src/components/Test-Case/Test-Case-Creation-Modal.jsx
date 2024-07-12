@@ -6,10 +6,12 @@ import { FaProjectDiagram } from "react-icons/fa";
 import { FiAlertCircle } from "react-icons/fi";
 import { TestCaseContext } from "../../context/TestCaseContext";
 import { GetAllTestCases } from "../../hooks/get-test-case";
+import { useGetAllProject } from "../../hooks/get-project";
 
 export default function TestCaseCreation({ isOpen, setIsOpen, mutate }) {
   const { user } = useGetUser();
   const { CreateTestCase } = useContext(TestCaseContext);
+  const { projects } = useGetAllProject();
 
   const [data, setData] = useState({
     title: "",
@@ -17,6 +19,7 @@ export default function TestCaseCreation({ isOpen, setIsOpen, mutate }) {
     steps: "",
     data: "",
     module: "",
+    project: "",
     actualResult: "",
     expectedResult: "",
     createdBy: "",
@@ -53,6 +56,7 @@ export default function TestCaseCreation({ isOpen, setIsOpen, mutate }) {
         description: "",
         steps: "",
         data: "",
+        project: "",
         module: "",
         actualResult: "",
         expectedResult: "",
@@ -79,14 +83,14 @@ export default function TestCaseCreation({ isOpen, setIsOpen, mutate }) {
             animate={{ scale: 1, rotate: "0deg" }}
             exit={{ scale: 0, rotate: "0deg" }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-gradient-to-br from-violet-600 to-indigo-600 text-white p-6 rounded-lg w-full max-w-lg lg:max-w-3xl shadow-xl cursor-default relative overflow-hidden"
+            className="bg-gradient-to-br from-blue-400 to-slate-700 text-white p-6 rounded-lg w-full max-w-lg lg:max-w-3xl shadow-xl cursor-default relative overflow-hidden"
           >
             <FiAlertCircle className="text-white/10 rotate-12 text-[250px] absolute z-0 -top-24 -left-24" />
             <div className="relative z-10">
-              <div className="bg-white w-12 h-12 mb-2 rounded-full text-3xl text-indigo-600 grid place-items-center mx-auto">
+              {/* <div className="bg-white w-12 h-12 mb-2 rounded-full text-3xl text-indigo-600 grid place-items-center mx-auto">
                 <FaProjectDiagram />
-              </div>
-              <h3 className="text-2xl font-bold text-center mb-2 text-slate-300">
+              </div> */}
+              <h3 className="text-2xl font-bold text-center mb-2 text-slate-100">
                 Create Test Case
               </h3>
 
@@ -101,7 +105,7 @@ export default function TestCaseCreation({ isOpen, setIsOpen, mutate }) {
                   />
                   <span
                     className="absolute left-2 top-0 -translate-y-1/2
-      scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+      scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
       peer-focus:scale-0
       "
                   >
@@ -121,7 +125,7 @@ export default function TestCaseCreation({ isOpen, setIsOpen, mutate }) {
                   />
                   <span
                     className="absolute left-2 top-0 -translate-y-1/2
-            scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+            scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
             peer-focus:scale-0
             "
                   >
@@ -140,34 +144,60 @@ export default function TestCaseCreation({ isOpen, setIsOpen, mutate }) {
                   />
                   <span
                     className="absolute left-2 top-0 -translate-y-1/2
-            scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+            scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
             peer-focus:scale-0
             "
                   >
                     Steps
                   </span>
                 </label>
+                <div className="flex gap-2">
+                  <label htmlFor="module" className="relative block w-1/2">
+                    <textarea
+                      type="text"
+                      id="module"
+                      cols={3}
+                      rows={1}
+                      value={data.module}
+                      onChange={handleChange}
+                      className="px-2 peer w-full rounded border border-neutral-400 p-4 text-base transition-shadow focus:ring-1 focus:ring-offset-0 focus:border-indigo-400 focus:outline-none text-black"
+                    />
 
-                <label htmlFor="module" className="relative block w-full">
-                  <textarea
-                    type="text"
-                    id="module"
-                    cols={3}
-                    rows={1}
-                    value={data.module}
-                    onChange={handleChange}
-                    className="px-2 peer w-full rounded border border-neutral-400 p-4 text-base transition-shadow focus:ring-1 focus:ring-offset-0 focus:border-indigo-400 focus:outline-none text-black"
-                  />
-
-                  <span
-                    className="absolute left-2 top-0 -translate-y-1/2
-            scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+                    <span
+                      className="absolute left-2 top-0 -translate-y-1/2
+            scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
             peer-focus:scale-0
             "
-                  >
-                    Module
-                  </span>
-                </label>
+                    >
+                      Module
+                    </span>
+                  </label>
+                  <label htmlFor="" className="relative block w-1/2">
+                    <select
+                      id=""
+                      value={data.project}
+                      onChange={(e) =>
+                        setData({ ...data, project: e.target.value })
+                      }
+                      className="px-2 peer w-full rounded border border-neutral-400 p-4 text-base transition-shadow focus:ring-1 focus:ring-offset-0 focus:border-indigo-400 focus:outline-none text-black pb-4"
+                    >
+                      <option value="">Choose Project</option>
+                      {projects.map((project, index) => (
+                        <option key={index} value={project.title}>
+                          {project.title}
+                        </option>
+                      ))}
+                    </select>
+                    <span
+                      className="absolute left-2 top-0 -translate-y-1/2
+                scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
+                peer-focus:scale-0
+                "
+                    >
+                      Choose Project
+                    </span>
+                  </label>
+                </div>
                 <div className="flex gap-2">
                   <label
                     htmlFor="actualResult"
@@ -185,7 +215,7 @@ export default function TestCaseCreation({ isOpen, setIsOpen, mutate }) {
 
                     <span
                       className="absolute left-2 top-0 -translate-y-1/2
-          scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+          scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
           peer-focus:scale-0
           "
                     >
@@ -208,7 +238,7 @@ export default function TestCaseCreation({ isOpen, setIsOpen, mutate }) {
 
                     <span
                       className="absolute left-2 top-0 -translate-y-1/2
-          scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+          scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
           peer-focus:scale-0
           "
                     >
@@ -218,7 +248,7 @@ export default function TestCaseCreation({ isOpen, setIsOpen, mutate }) {
                 </div>
 
                 <div className="flex gap-2 items-center">
-                  <label htmlFor="data" className="relative block w-full">
+                  <label htmlFor="data" className="relative block w-1/2">
                     <textarea
                       type="text"
                       id="data"
@@ -231,7 +261,7 @@ export default function TestCaseCreation({ isOpen, setIsOpen, mutate }) {
 
                     <span
                       className="absolute left-2 top-0 -translate-y-1/2
-          scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+          scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
           peer-focus:scale-0
           "
                     >
@@ -248,7 +278,7 @@ export default function TestCaseCreation({ isOpen, setIsOpen, mutate }) {
                     />
                     <span
                       className="absolute left-2 top-0 -translate-y-1/2
-            scale-100 bg-violet-500 rounded px-0.5 text-base text-white font-medium transition-transform
+            scale-100 bg-blue-500 rounded px-0.5 text-base text-white font-medium transition-transform
             peer-focus:scale-0
             
             "
@@ -267,7 +297,7 @@ export default function TestCaseCreation({ isOpen, setIsOpen, mutate }) {
                 </button>
                 <button
                   onClick={handleSubmit}
-                  className="bg-white hover:opacity-90 transition-opacity text-indigo-600 font-semibold w-full py-2 rounded"
+                  className="bg-white hover:opacity-90 transition-opacity text-blue-600 font-semibold w-full py-2 rounded"
                 >
                   Create
                 </button>

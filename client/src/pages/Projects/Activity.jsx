@@ -3,7 +3,7 @@ import { IoIosChatbubbles } from "react-icons/io";
 import { dateFormatter } from "../../utils";
 import { ProjectContext } from "../../context/ProjectContext";
 
-const Activity = ({ activities, id }) => {
+const Activity = ({ activities, id, mutate }) => {
   const [type, setType] = useState();
   const [activity, setActivity] = useState("");
 
@@ -18,7 +18,7 @@ const Activity = ({ activities, id }) => {
     { name: "Assigned" },
   ];
 
-  console.log(activities, id);
+  // console.log(activities, id);
   const handleChange = (e) => {
     const { value } = e.target;
     setType(value);
@@ -31,6 +31,7 @@ const Activity = ({ activities, id }) => {
         activity,
       };
       await PostActivity(newData, id);
+      mutate();
       console.log(newData);
     } catch (error) {
       console.log(error);

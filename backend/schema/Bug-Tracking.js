@@ -19,6 +19,9 @@ const bugTrackingSchema = Schema(
       default: "normal",
       enum: ["high", "medium", "normal", "low"],
     },
+    project: {
+      type: String,
+    },
     status: {
       type: String,
     },
