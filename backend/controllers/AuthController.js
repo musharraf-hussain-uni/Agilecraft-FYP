@@ -24,7 +24,7 @@ export const register = async (req, res) => {
       phoneNumber,
       role: options,
       img: conditionForImage,
-      isLoggedIn,
+      isLoggedIn: false,
     });
 
     // Generate token
