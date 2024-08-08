@@ -12,20 +12,24 @@ const Contact = () => {
   return (
     <div id="contact" className="contact-container">
       <div className={`contact-info bg-contact-back `}>
-        <h3 className="text-2xl font-bold">JOIN OUR WEBSITE</h3>
-        <p className="text-[#276fd5] text-3xl my-10">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, sint.
+        <h3 className="text-2xl font-bold text-[#fefefe]">JOIN OUR WEBSITE</h3>
+        <p className="text-[#2564bd] text-2xl my-10">
+          Our customer service experts are standing by to assist you at
+          1-800-520-179. Call now!!.
         </p>
-        <p className="text-white text-xl">Your Company Address</p>
+        <p className="text-white text-xl">
+          Sir Syed University of Engineering and Technology University Road,
+          Karachi 75300, Pakistan
+        </p>
         <p className="text-white text-xl">Monday - Friday 9:00 am - 8:00 pm</p>
         <p className="text-white text-xl mb-10">
           Saturday - Sunday 9:00 am - 10:00 pm
         </p>
-        <a href="#" className="text-[#87cae4] text-xl">
+        <a href="#" className="text-[#bfd6e0] text-xl">
           ContactSupport@etms.com
         </a>
         <br />
-        <h2 className="text-blue-300 text-xl mt-10">Follow us</h2>
+        <h2 className="text-300 text-[#fefefe] text-xl mt-10">Follow us</h2>
         <div className="social-links">
           <ContactIcon
             to="https://www.facebook.com/"
@@ -48,8 +52,8 @@ const Contact = () => {
             label="LinkedIn"
           />
         </div>
-        <h5 className="text-xl font-bold text-gray-400 mt-10">
-          &copy; 2024 Your Company. Privacy Policy
+        <h5 className="text-xl text-[#fefefe] font-bold text-400 mt-10">
+          &copy; 2024 Enhanced Task Management System. Privacy Policy
         </h5>
       </div>
 

@@ -11,9 +11,9 @@ const Footer = () => {
         <div className={styles.footerSection}>
           <h4>PRODUCT</h4>
           <ul>
-            <li>Test Management</li>
-            <li>Feature Tour</li>
-            <li>Video Demo</li>
+            <li>Task Management</li>
+            <li>Feature Overview</li>
+            <li>Video Tutorials</li>
             <li>Pricing & Plans</li>
             <li>Free Trial</li>
           </ul>
@@ -23,46 +23,49 @@ const Footer = () => {
           <h4>FEATURES</h4>
           <ul>
             <li>Unified QA Testing</li>
+            <li>Requirements Management</li>
+            <li>Bug Tracking</li>
             <li>Test Case Management</li>
-            <li>Exploratory Testing</li>
-            <li>Test Automation</li>
-            <li>Projects & Milestones</li>
-            <li>Reporting & Metrics</li>
-            <li>QA Team Productivity</li>
+            <li>Code Review Management</li>
+            <li>Reporting & Analytics</li>
+            <li>Collaboration Tools</li>
           </ul>
         </div>
 
         <div className={styles.footerSection}>
           <h4>CONTENT</h4>
           <ul>
-            <li>Testmo Blog</li>
+            <li>ETMS Blog</li>
             <li>Testing Guides</li>
-            <li>Support & Docs</li>
-            <li>Testing Topics</li>
-            <li>Newsletter</li>
+            <li>Support & Documentation</li>
+            <li>Testing Resources</li>
+            <li>Newsletter Subscription</li>
           </ul>
         </div>
 
         <div className={styles.footerSection}>
           <h4>COMPANY</h4>
           <ul>
-            <li>About & Contact</li>
-            <li>Legal</li>
+            <li>About Us</li>
+            <li>Contact Information</li>
+            <li>Legal Information</li>
             <li>Terms of Service</li>
             <li>Privacy Policy</li>
-            <li>Security</li>
-            <li>Status</li>
+            <li>Status Page</li>
           </ul>
         </div>
       </footer>
       <div className={styles.footer1}>
         <div className={styles.footerContent}>
           <p className={styles.footerText}>
-            4 Embarcadero Center, Suite 780, San Francisco CA 94111
+            Department of Computer Science & Information Technology, Sir Syed
+            University of Engineering and Technology, University Road, Karachi
+            75300{" "}
           </p>
           <p className={styles.footerCopyright}>
-            © 2024 Jot-form Inc. The name Jot-form and the Jot-form logo are
-            registered trademarks of Jot-form Inc.
+            © 2024 Enhanced Task Management System. All rights reserved. The
+            name ETMS and the ETMS logo are registered trademarks of the
+            development team.{" "}
           </p>
           <ul className={styles.footerLinks}>
             <li>

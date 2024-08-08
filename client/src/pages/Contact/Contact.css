@@ -25,11 +25,27 @@
   }
   
   .bg-contact-back {
+    position: relative;
     background-image: url('./ContactBack.jpg');
     background-size: contain;
     background-position: center;
   }
 
+  .bg-contact-back::before {
+    content: ""; /* Required for a pseudo-element */
+    position: absolute; /* Position it absolutely within the parent */
+    top: 0; /* Cover the entire area */
+    left: 0; /* Cover the entire area */
+    right: 0; /* Cover the entire area */
+    bottom: 0; /* Cover the entire area */
+    background-color: rgba(255, 255, 255, 0.2); /* White overlay with 50% opacity */  
+    z-index: 1; /* Ensure it sits above the background image */
+  }
+
+.bg-contact-back > * {
+  position: relative; /* Ensure content is above the overlay */
+  z-index: 2; /* Higher than the overlay */
+}
   .contact-form form {
     margin-bottom: 20px;
     color: #003175;

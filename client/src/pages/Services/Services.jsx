@@ -1,10 +1,9 @@
-import "./Services.css"; // Import the CSS file for styling
+import "./Services.css";
 import requirementManagement from "./img/RequirementGathering.png";
 import BugTracking from "./img/BugTracking.png";
 import TestCaseManagement from "./img/testCase.png";
 import TestExecution from "./img/testExecute.png";
 import CodeReviewManagement from "./img/codeReview.png";
-import TestingProcessReview from "./img/testProcess.png";
 import ReportingandAnalytics from "./img/reportAnalytics.png";
 import UserCollaboration from "./img/userCollab.png";
 const Services = () => {
@@ -47,11 +46,6 @@ const Services = () => {
             slogan="Execute and record test cases"
           />
           <ServiceCard
-            imageSrc={TestingProcessReview}
-            serviceName="Testing Process Review"
-            slogan="Review testing processes and strategies"
-          />
-          <ServiceCard
             imageSrc={UserCollaboration}
             serviceName="User Collaboration and Communication"
             slogan="Foster effective communication among stakeholders"
@@ -65,7 +59,7 @@ const Services = () => {
 const ServiceCard = ({ imageSrc, serviceName, slogan }) => {
   return (
     <div className="service-card">
-      <img src={imageSrc} className="service-image" />
+      <img src={imageSrc} className="service-image" alt={serviceName} />
       <h3 className="service-name">{serviceName}</h3>
       <p className="slogan">{slogan}</p>
     </div>

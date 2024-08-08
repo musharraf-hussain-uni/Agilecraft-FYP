@@ -1,137 +1,125 @@
-
 /* Apply basic styles to the footer */
 footer {
-  background-color: #f3f3fe;
-  color: #fff;
-  padding: 40px 20px;
-  display: flex;
-  justify-content: space-around;
+  background-color: #f3f3fe; /* Light background color */
+  color: #fff; /* Text color */
+  padding: 40px 20px; /* Padding around the footer */
+  display: flex; /* Flexbox for layout */
+  justify-content: space-around; /* Space sections evenly */
+  border-top: 2px solid #dcdcfb; /* Subtle border at the top */
 }
 
 /* Style header in each section */
 .footerSection h4 {
-  font-size: 14px;
-  margin-bottom: 12px;
-  color: #093148;
+  font-size: 17px; /* Slightly larger font size */
+  margin-bottom: 12px; /* Space below header */
+  color: #093148; /* Darker color for contrast */
+  text-transform: uppercase; /* Uppercase for emphasis */
 }
 
 /* Style the list items */
 .footerSection ul {
-  list-style: none;
-  padding: 0;
+  list-style: none; /* Remove default list style */
+  padding: 0; /* No padding */
 }
 
 .footerSection li {
-  margin-bottom: 5px;
-  color: #747373;
-  font-weight: 100;
-  font-size: 14px;
+  margin-bottom: 10px; /* More space between items */
+  color: #747373; /* Text color */
+  font-weight: 400; /* Normal weight */
+  font-size: 14px; /* Font size */
+  cursor: pointer;
 }
+
 .footerSection li:hover {
-  text-decoration: underline;
+  text-decoration: underline; /* Underline on hover */
+  color: #093148; /* Change color on hover */
 }
 
 /* Style links in the footer */
 .footerSection a {
-  color: #fff;
-  text-decoration: none;
+  color: #fff; /* Link color */
+  text-decoration: none; /* No underline */
 }
 
 .footerSection a:hover {
-  text-decoration: underline;
+  text-decoration: underline; /* Underline on hover */
+  color: #dcdcfb; /* Change color on hover */
 }
 
-.footerSection br {
-  display: none; /* Hide <br> by default */
-}
-/* second footer */
+/* Style for the second footer */
 .footer1 {
-    display: flex;
-    flex-direction: column;
-height: 14.2vh;
-    background-color: #dcdcfb;
-    padding: 1rem;
-    border-top: px solid #f3f3fe;
-    width: 100%;
-  }
-  
-  .footerContent {
-    display: flex;
-    flex-direction: column;
-    margin-left: 40px;
-  }
-  
-  .footerText {
-    font-size: 0.9rem;
-    margin-bottom: 0.2rem;
-  }
-  
-  .footerCopyright {
-    font-size: 0.8rem;
-    margin-bottom: 1rem;
-    color: #666;
-  }
-  
-  .footerLinks {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    justify-content: center;
-  }
-  
-  .footerLink {
-    display: block;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.8rem;
-    text-decoration: none;
-    color: #333;
-    border-radius: 0.25rem;
-    margin: 0 0.25rem 0.5rem 0;
-    transition: background-color 0.3s ease;
-  }
+  display: flex; /* Flexbox for layout */
+  flex-direction: column; /* Stack items vertically */
+  height: auto; /* Adjust height automatically */
+  background-color: #dcdcfb; /* Light purple background */
+  padding: 2rem; /* Increased padding */
+  border-top: 2px solid #f3f3fe; /* Border at the top */
+  width: 100%; /* Full width */
+}
 
-  .footerBlog {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-  
-  .footerBlogLink {
-    display: block;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.8rem;
-    text-decoration: none;
-    color: #333;
-    border-radius: 0.25rem;
-    margin-right: 0.5rem;
-    transition: background-color 0.3s ease;
-  }
-  
+.footerContent {
+  display: flex; /* Flexbox for layout */
+  flex-direction: column; /* Stack items vertically */
+  margin-left: 40px; /* Left margin */
+}
 
+.footerText {
+  font-size: 0.9rem; /* Font size */
+  margin-bottom: 0.5rem; /* Space below text */
+  color: #333; /* Darker text for better readability */
+}
+
+.footerCopyright {
+  font-size: 0.8rem; /* Smaller font size */
+  margin-bottom: 1rem; /* Space below copyright */
+  color: #666; /* Gray color */
+}
+
+.footerLinks {
+  display: flex; /* Flexbox for layout */
+  flex-wrap: wrap; /* Allow wrapping */
+  list-style: none; /* Remove default list style */
+  padding: 0; /* No padding */
+  margin: 0; /* No margin */
+  justify-content: center; /* Center items */
+}
+
+.footerLink {
+  display: block; /* Block display */
+  padding: 0.25rem 0.5rem; /* Padding */
+  font-size: 0.9rem; /* Font size */
+  text-decoration: none; /* No underline */
+  color: #333; /* Dark text color */
+  border-radius: 0.25rem; /* Rounded corners */
+  margin: 0 0.25rem 0.5rem 0; /* Margin around links */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
   
-  .socialLinks {
-    display: flex;
-    text-align: right;
-    justify-content: right;
-    padding: 0.25rem;
-    gap: 5px;
-    font-size: 1.2rem;
-    text-decoration: none;
-    color: #333;
-    margin: -2em 0.5rem;
-    transition: background-color 0.3s ease;
-  }
+}
+
+.footerLink:hover {
+  background-color: #f3f3fe; /* Light background on hover */
+  color: #093148; /* Dark text on hover */
+}
+
+.socialLinks {
+  display: flex; /* Flexbox for layout */
+  justify-content: center; /* Center items */
+  padding: 0.25rem; /* Padding */
+  gap: 10px; /* Space between icons */
+  font-size: 1.5rem; /* Larger icon size */
+  color: #333; /* Dark text color */
   
-  .footerSocialLink:hover {
-    background-color: #ddd;
-  }
-  
-  .fa-globe-americas {
-    font-size: 0.9rem;
-  }
-  
-  .fab {
-    font-size: 1.2rem;
-  }
+}
+
+.footerSocialLink:hover {
+  background-color: #ddd; /* Light background on hover */
+}
+
+/* Icon styles */
+.fab {
+  transition: transform 0.3s ease; /* Smooth scaling effect */
+}
+
+.fab:hover {
+  transform: scale(1.1); /* Scale up on hover */
+}

@@ -16,7 +16,6 @@ const Login = () => {
     try {
       e.preventDefault();
       login(email, password);
-      
     } catch (error) {
       console.log(error);
     }
@@ -35,7 +34,7 @@ const Login = () => {
         <div className="right-panel">
           <div className="right-panel-content">
             <img src={logo} alt="logo" className="logo" />
-            <h1>Enhance Tasks Management System</h1>
+            <h1>Enhanced Tasks Management System</h1>
             <h3>Welcome to ETMS!! 🌟</h3>
             <p>
               Please sign-in to your account and start the <br />

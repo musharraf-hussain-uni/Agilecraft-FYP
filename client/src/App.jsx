@@ -24,7 +24,7 @@ import SingleBugTrack from "./pages/Bug-Tracking/SingleBugTrack.jsx";
 import UpdateBugTrack from "./pages/Bug-Tracking/UpdateBugTrack.jsx";
 import BugTrackContextProvider from "./context/BugTrackContext.jsx";
 import CodeReviewContextProvider from "./context/CodeReviewContext.jsx";
-import Reporting from "./pages/Reporting/Reporting.jsx";
+import Reporting from "./pages/Reporting/reporting.jsx";
 import { NotificationProvider } from "./context/Notification-Context.jsx";
 
 const router = createBrowserRouter([
