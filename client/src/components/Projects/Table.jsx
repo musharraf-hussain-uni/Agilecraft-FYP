@@ -80,11 +80,11 @@ const Table = ({ tasks, loading, mutate }) => {
         <th>
           <p className="text-white uppercase font-bold">S.NO</p>
         </th>
-        <th className="text-base">First Name</th>
-        <th className="text-base">Last Name</th>
-        <th className="text-base">Role</th>
-        <th className="text-base">Email Address</th>
-        <th className="text-base">Phone No.</th>
+        <th className="text-base">Project</th>
+        <th className="text-base">Priority</th>
+        <th className="text-base">Deadline</th>
+        <th className="text-base">Chat and Assets</th>
+        <th className="text-base">Assigned To</th>
         <th className="text-base">Actions</th>
       </tr>
     </thead>
